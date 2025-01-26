@@ -47,14 +47,14 @@ function head() {
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.7.1/css/all.css">
 </head>
 
-<body>
-
-    <div class="container"><br />
+<body style="background-color:rgb(0, 0, 0);">
+    <br><br><br>
+<center><h3 style="color: #33ff00;">Qurik - Installation Wizard</h3></center><br><br>
+<center><h6 style="color:rgb(255, 255, 255);">Made with ❤️ by <a href="https://www.instagram.com/hacker_hub8" target="_blank">hackerhub8</a></h6></center>
+    <div class="container" ><br />
         <div class="card bg-light">
             <div class="row d-flex justify-content-center">
                 <div class="col-lg-10">
-                    <br /><center><h3>Qurik - Installation Wizard</h3><br />
-                    <h6>Made with ❤️ by <a href="https://www.instagram.com/hacker_hub8" target="_blank">hackerhub8</a></h6></center>
                         <div class="jumbotron">
                             <ul class="nav nav-tabs nav-fill">
                                 <li class="nav-item">
@@ -72,6 +72,7 @@ function head() {
 }
 
 function footer() {
+
 ?>
                             </div>
                         </div>
@@ -79,6 +80,8 @@ function footer() {
             </div>
         </div>
     </div>
+    <br><br>
+    <center><h6 style="color:rgb(255, 255, 255);">Get Help For<a href="https://qurik.hackerhub8.in" target="_blank">qurik</a></h6></center>
 
 </body>
 </html>
