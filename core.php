@@ -586,7 +586,7 @@ if ($settings['dark_mode'] == 1) {
         echo 'active';
     }
 ?>">
-              <i class="fab fa-php"></i>&nbsp; <p>PHP Info</p>
+              <i class="fa-solid fa-sitemap"></i>&nbsp; <p>PHP Info</p>
            </a>
         </li>
 		
