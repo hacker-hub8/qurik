@@ -86,18 +86,18 @@ if (isset($_POST['signin'])) {
 
     if ($username == $settings['username'] && $password == $settings['password']) {
         
-        $checklh = $mysqli->query("SELECT id FROM `psec_logins` WHERE `username`='$username' AND ip='$ip' AND date='$date' AND time='$time' AND successful='1'");
+        $checklh = $mysqli->query("SELECT id FROM `qurik_logins` WHERE `username`='$username' AND ip='$ip' AND date='$date' AND time='$time' AND successful='1'");
         if (mysqli_num_rows($checklh) == 0) {
-            $log = $mysqli->query("INSERT INTO `psec_logins` (username, ip, date, time, successful) VALUES ('$username', '$ip', '$date', '$time', '1')");
+            $log = $mysqli->query("INSERT INTO `qurik_logins` (username, ip, date, time, successful) VALUES ('$username', '$ip', '$date', '$time', '1')");
         }
         
         $_SESSION['sec-username'] = $username;
         
         echo '<meta http-equiv="refresh" content="0;url=dashboard.php">';
     } else {
-        $checklh = $mysqli->query("SELECT id FROM `psec_logins` WHERE `username`='$username' AND ip='$ip' AND date='$date' AND time='$time' AND successful='0'");
+        $checklh = $mysqli->query("SELECT id FROM `qurik_logins` WHERE `username`='$username' AND ip='$ip' AND date='$date' AND time='$time' AND successful='0'");
         if (mysqli_num_rows($checklh) == 0) {
-            $log = $mysqli->query("INSERT INTO `psec_logins` (username, ip, date, time, successful) VALUES ('$username', '$ip', '$date', '$time', '0')");
+            $log = $mysqli->query("INSERT INTO `qurik_logins` (username, ip, date, time, successful) VALUES ('$username', '$ip', '$date', '$time', '0')");
         }
         
         echo '

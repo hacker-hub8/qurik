@@ -4,7 +4,7 @@
 // CSS Style
 echo '
 <style>
-#psec_confbox {
+#qurik_confbox {
     position: absolute;
     border-style: solid;
     border-color: black;
@@ -19,5 +19,5 @@ echo '
 </style>';
 
 // HTML Confirmation Message
-echo '<p id="psec_confbox">qurik integration is correct.</p>';
+echo '<p id="qurik_confbox">qurik integration is correct.</p>';
 ?>

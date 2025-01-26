@@ -1,7 +1,7 @@
 <?php
 include "header.php";
 
-$query = $mysqli->query("SELECT * FROM `psec_pages-layolt` WHERE page='Banned'");
+$query = $mysqli->query("SELECT * FROM `qurik_pages-layolt` WHERE page='Banned'");
 $row   = $query->fetch_assoc();
 ?>
         <br />
@@ -24,7 +24,7 @@ if ($ip == "::1") {
     $ip = "127.0.0.1";
 }
 
-$querybanned = $mysqli->query("SELECT * FROM `psec_bans` WHERE ip='$ip'");
+$querybanned = $mysqli->query("SELECT * FROM `qurik_bans` WHERE ip='$ip'");
 $banned      = mysqli_num_rows($querybanned);
 $row         = mysqli_fetch_array($querybanned);
 if(isset($row['reason'])) {

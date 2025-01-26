@@ -154,7 +154,7 @@ if (isset($_GET['ip'])) {
 						</div>
 						<div class="card-body">
 <?php
-    $result = $mysqli->query("SELECT * FROM `psec_logs` WHERE ip = '$ip'");
+    $result = $mysqli->query("SELECT * FROM `qurik_logs` WHERE ip = '$ip'");
     
     if (mysqli_num_rows($result) == 0) {
         echo '<div class="callout callout-info">
@@ -211,7 +211,7 @@ if (isset($_GET['ip'])) {
 						</div>
 						<div class="card-body">
 <?php
-    $query = $mysqli->query("SELECT * FROM `psec_bans` WHERE ip = '$ip'");
+    $query = $mysqli->query("SELECT * FROM `qurik_bans` WHERE ip = '$ip'");
     
     if (mysqli_num_rows($query) == 0) {
         echo '<div class="callout callout-info">

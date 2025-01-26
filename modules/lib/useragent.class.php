@@ -1,11 +1,11 @@
 <?php
 // Useragent Class
 
-class UserAgentFactoryPSec
+class UserAgentFactoryqurik
 {
     public static function analyze($string, $imageSize = null, $imagePath = null, $imageExtension = null)
     {
-        $class = new UserAgentPSec();
+        $class = new UserAgentqurik();
         $imageSize === null || $class->imageSize = $imageSize;
         $imagePath === null || $class->imagePath = $imagePath;
         $imageExtension === null || $class->imageExtension = $imageExtension;
@@ -15,7 +15,7 @@ class UserAgentFactoryPSec
     }
 }
 
-class UserAgentPSec
+class UserAgentqurik
 {
     private $_imagePath = "";
     private $_imageSize = 16;
@@ -111,6 +111,6 @@ class UserAgentPSec
     
 }
 spl_autoload_register(array(
-    'UserAgentPSec',
+    'UserAgentqurik',
     '__autoload'
 ));

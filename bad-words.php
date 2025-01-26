@@ -5,18 +5,18 @@ head();
 if (isset($_POST['add-word'])) {
     $word       = $_POST['word'];
 	
-    $queryvalid = $mysqli->query("SELECT * FROM `psec_bad-words` WHERE `word`='$word' LIMIT 1");
+    $queryvalid = $mysqli->query("SELECT * FROM `qurik_bad-words` WHERE `word`='$word' LIMIT 1");
     $validator  = mysqli_num_rows($queryvalid);
     if ($validator > "0") {
     } else {
-        $query = $mysqli->query("INSERT INTO `psec_bad-words` (`word`) VALUES ('$word')");
+        $query = $mysqli->query("INSERT INTO `qurik_bad-words` (`word`) VALUES ('$word')");
     }
 }
 
 if (isset($_GET['delete-id'])) {
     $id    = (int) $_GET["delete-id"];
     
-    $query = $mysqli->query("DELETE FROM `psec_bad-words` WHERE id='$id'");
+    $query = $mysqli->query("DELETE FROM `qurik_bad-words` WHERE id='$id'");
 }
 
 if (isset($_POST['save'])) {
@@ -55,7 +55,7 @@ if (isset($_POST['save'])) {
 				<div class="col-md-8">
                     	    
 <?php
-$queryfc = $mysqli->query("SELECT * FROM `psec_bad-words`");
+$queryfc = $mysqli->query("SELECT * FROM `qurik_bad-words`");
 $countfc = mysqli_num_rows($queryfc);
 if ($countfc > 0) {
     echo '
@@ -140,7 +140,7 @@ echo $settings['badword_replace'];
 									</thead>
 									<tbody>
 <?php
-$query = $mysqli->query("SELECT * FROM `psec_bad-words`");
+$query = $mysqli->query("SELECT * FROM `qurik_bad-words`");
 while ($rowd = $query->fetch_assoc()) {
     echo '
 										<tr>

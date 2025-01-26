@@ -3,7 +3,7 @@
         <div class="mt-auto d-flex justify-content-center">
           <div class="col-lg-8">
             <br />
-            <p>Protected by <strong>Qurik</strong></p>
+            <p style="color:rgb(255, 255, 255);">Protected by <strong><a href="https://qurik.hackerhub8.in" target="_blank">Qurik</a></strong></p>
           </div>
         </div>
       </footer>

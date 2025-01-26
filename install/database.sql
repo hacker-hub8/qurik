@@ -1,26 +1,26 @@
-DROP TABLE IF EXISTS `psec_bad-words`;
-DROP TABLE IF EXISTS `psec_bans`;
-DROP TABLE IF EXISTS `psec_bans-country`;
-DROP TABLE IF EXISTS `psec_bans-other`;
-DROP TABLE IF EXISTS `psec_bans-ranges`;
-DROP TABLE IF EXISTS `psec_dnsbl-databases`;
-DROP TABLE IF EXISTS `psec_ip-whitelist`;
-DROP TABLE IF EXISTS `psec_file-whitelist`;
-DROP TABLE IF EXISTS `psec_live-traffic`;
-DROP TABLE IF EXISTS `psec_logins`;
-DROP TABLE IF EXISTS `psec_logs`;
-DROP TABLE IF EXISTS `psec_pages-layolt`;
+DROP TABLE IF EXISTS `qurik_bad-words`;
+DROP TABLE IF EXISTS `qurik_bans`;
+DROP TABLE IF EXISTS `qurik_bans-country`;
+DROP TABLE IF EXISTS `qurik_bans-other`;
+DROP TABLE IF EXISTS `qurik_bans-ranges`;
+DROP TABLE IF EXISTS `qurik_dnsbl-databases`;
+DROP TABLE IF EXISTS `qurik_ip-whitelist`;
+DROP TABLE IF EXISTS `qurik_file-whitelist`;
+DROP TABLE IF EXISTS `qurik_live-traffic`;
+DROP TABLE IF EXISTS `qurik_logins`;
+DROP TABLE IF EXISTS `qurik_logs`;
+DROP TABLE IF EXISTS `qurik_pages-layolt`;
 
 -- --------------------------------------------------------
 
-CREATE TABLE `psec_bad-words` (
+CREATE TABLE `qurik_bad-words` (
   `id` int(11) NOT NULL AUTO_INCREMENT primary key,
   `word` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
-CREATE TABLE IF NOT EXISTS `psec_bans` (
+CREATE TABLE IF NOT EXISTS `qurik_bans` (
   `id` int(11) NOT NULL AUTO_INCREMENT primary key,
   `ip` char(45) COLLATE utf8mb4_unicode_ci NOT NULL,
   `date` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `psec_bans` (
 
 -- --------------------------------------------------------
 
-CREATE TABLE IF NOT EXISTS `psec_bans-country` (
+CREATE TABLE IF NOT EXISTS `qurik_bans-country` (
   `id` int(11) NOT NULL AUTO_INCREMENT primary key,
   `country` varchar(120) COLLATE utf8mb4_unicode_ci NOT NULL,
   `redirect` tinyint(1) NOT NULL DEFAULT '0',
@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS `psec_bans-country` (
 
 -- --------------------------------------------------------
 
-CREATE TABLE IF NOT EXISTS `psec_bans-other` (
+CREATE TABLE IF NOT EXISTS `qurik_bans-other` (
   `id` int(11) NOT NULL AUTO_INCREMENT primary key,
   `type` varchar(40) COLLATE utf8mb4_unicode_ci NOT NULL,
   `value` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
@@ -50,24 +50,24 @@ CREATE TABLE IF NOT EXISTS `psec_bans-other` (
 
 -- --------------------------------------------------------
 
-CREATE TABLE `psec_bans-ranges` (
+CREATE TABLE `qurik_bans-ranges` (
   `id` int(11) NOT NULL AUTO_INCREMENT primary key,
   `ip_range` char(19) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
-CREATE TABLE IF NOT EXISTS `psec_dnsbl-databases` (
+CREATE TABLE IF NOT EXISTS `qurik_dnsbl-databases` (
   `id` int(11) NOT NULL AUTO_INCREMENT primary key,
   `database` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-INSERT INTO `psec_dnsbl-databases` (`id`, `database`) VALUES
+INSERT INTO `qurik_dnsbl-databases` (`id`, `database`) VALUES
 (1, 'bl.spamcop.net');
 
 -- --------------------------------------------------------
 
-CREATE TABLE IF NOT EXISTS `psec_ip-whitelist` (
+CREATE TABLE IF NOT EXISTS `qurik_ip-whitelist` (
   `id` int(11) NOT NULL AUTO_INCREMENT primary key,
   `ip` char(45) COLLATE utf8mb4_unicode_ci NOT NULL,
   `notes` varchar(255) COLLATE utf8mb4_unicode_ci NULL
@@ -75,7 +75,7 @@ CREATE TABLE IF NOT EXISTS `psec_ip-whitelist` (
 
 -- --------------------------------------------------------
 
-CREATE TABLE IF NOT EXISTS `psec_file-whitelist` (
+CREATE TABLE IF NOT EXISTS `qurik_file-whitelist` (
   `id` int(11) NOT NULL AUTO_INCREMENT primary key,
   `path` char(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `notes` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
@@ -83,7 +83,7 @@ CREATE TABLE IF NOT EXISTS `psec_file-whitelist` (
 
 -- --------------------------------------------------------
 
-CREATE TABLE `psec_live-traffic` (
+CREATE TABLE `qurik_live-traffic` (
   `id` int(11) NOT NULL AUTO_INCREMENT primary key,
   `ip` char(45) COLLATE utf8mb4_unicode_ci NOT NULL,
   `useragent` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -105,7 +105,7 @@ CREATE TABLE `psec_live-traffic` (
 
 -- --------------------------------------------------------
 
-CREATE TABLE `psec_logins` (
+CREATE TABLE `qurik_logins` (
   `id` int(11) NOT NULL AUTO_INCREMENT primary key,
   `username` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `ip` char(45) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -116,7 +116,7 @@ CREATE TABLE `psec_logins` (
 
 -- --------------------------------------------------------
 
-CREATE TABLE IF NOT EXISTS `psec_logs` (
+CREATE TABLE IF NOT EXISTS `qurik_logs` (
   `id` int(11) NOT NULL AUTO_INCREMENT primary key,
   `ip` char(45) COLLATE utf8mb4_unicode_ci NOT NULL,
   `date` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -141,13 +141,13 @@ CREATE TABLE IF NOT EXISTS `psec_logs` (
 
 -- --------------------------------------------------------
 
-CREATE TABLE IF NOT EXISTS `psec_pages-layolt` (
+CREATE TABLE IF NOT EXISTS `qurik_pages-layolt` (
   `id` int(11) NOT NULL AUTO_INCREMENT primary key,
   `page` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
   `text` text COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-INSERT INTO `psec_pages-layolt` (`id`, `page`, `text`) VALUES
+INSERT INTO `qurik_pages-layolt` (`id`, `page`, `text`) VALUES
 (1, 'Banned', 'You are banned and you cannot continue to the website'),
 (2, 'Blocked', 'Malicious request was detected'),
 (3, 'Proxy', 'Access to the website via Proxy, VPN, TOR is not allowed (Disable Browser Data Compression if you have it enabled)'),

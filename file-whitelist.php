@@ -5,7 +5,7 @@ head();
 if (isset($_GET['delete-id'])) {
     $id    = (int) $_GET["delete-id"];
 
-    $query = $mysqli->query("DELETE FROM `psec_file-whitelist` WHERE id='$id'");
+    $query = $mysqli->query("DELETE FROM `qurik_file-whitelist` WHERE id='$id'");
 }
 ?>
 <div class="content-wrapper" style="background-color:rgb(0, 0, 0); color:rgb(0, 0, 0);">
@@ -39,7 +39,7 @@ if (isset($_POST['add'])) {
     $path       = addslashes(htmlspecialchars($_POST['path']));
     $notes      = addslashes(htmlspecialchars($_POST['notes']));
     
-    $queryvalid = $mysqli->query("SELECT * FROM `psec_file-whitelist` WHERE path='$path' LIMIT 1");
+    $queryvalid = $mysqli->query("SELECT * FROM `qurik_file-whitelist` WHERE path='$path' LIMIT 1");
     $validator  = mysqli_num_rows($queryvalid);
     if ($validator > "0") {
         echo '<br />
@@ -47,7 +47,7 @@ if (isset($_POST['add'])) {
                 <p><i class="fas fa-info-circle"></i> This <strong>File</strong> is already whitelisted.</p>
         </div>';
     } else {
-        $query = $mysqli->query("INSERT INTO `psec_file-whitelist` (path, notes) VALUES('$path', '$notes')");
+        $query = $mysqli->query("INSERT INTO `qurik_file-whitelist` (path, notes) VALUES('$path', '$notes')");
     }
 }
 ?>
@@ -59,7 +59,7 @@ if (isset($_POST['add'])) {
 if (isset($_GET['edit-id'])) {
     $id    = (int) $_GET["edit-id"];
 
-    $sql   = $mysqli->query("SELECT * FROM `psec_file-whitelist` WHERE id = '$id'");
+    $sql   = $mysqli->query("SELECT * FROM `qurik_file-whitelist` WHERE id = '$id'");
     $row   = mysqli_fetch_assoc($sql);
 	
     if (empty($id) || mysqli_num_rows($sql) == 0) {
@@ -71,7 +71,7 @@ if (isset($_GET['edit-id'])) {
         $path       = addslashes(htmlspecialchars($_POST['path']));
         $notes      = $_POST['notes'];
         
-        $queryvalid = $mysqli->query("SELECT * FROM `psec_file-whitelist` WHERE path='$path' AND id != '$id' LIMIT 1");
+        $queryvalid = $mysqli->query("SELECT * FROM `qurik_file-whitelist` WHERE path='$path' AND id != '$id' LIMIT 1");
         $validator  = mysqli_num_rows($queryvalid);
         if ($validator > "0") {
             echo '<br />
@@ -79,7 +79,7 @@ if (isset($_GET['edit-id'])) {
 					<p><i class="fas fa-info-circle"></i> This <strong>File</strong> is already whitelisted.</p>
 			</div>';
         } else {
-            $query = $mysqli->query("UPDATE `psec_file-whitelist` SET path='$path', `notes`='$notes' WHERE id='$id'");
+            $query = $mysqli->query("UPDATE `qurik_file-whitelist` SET path='$path', `notes`='$notes' WHERE id='$id'");
             echo '<meta http-equiv="refresh" content="0; url=file-whitelist.php">';
         }
     }
@@ -132,7 +132,7 @@ if (isset($_GET['edit-id'])) {
 									</thead>
 									<tbody>
 <?php
-$query = $mysqli->query("SELECT * FROM `psec_file-whitelist`");
+$query = $mysqli->query("SELECT * FROM `qurik_file-whitelist`");
 while ($row = $query->fetch_assoc()) {
     echo '
 										<tr>

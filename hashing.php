@@ -118,7 +118,7 @@ if (isset($_POST['generate'])) {
 									</div>
                                     <div id="crypt" class="tab-pane">
                                         Generated Crypt Hash:<br />
-										<input value="' . crypt($string, 'psec') . '" name="crypt" class="form-control" disabled>
+										<input value="' . crypt($string, 'qurik') . '" name="crypt" class="form-control" disabled>
 									</div>
                                     <div id="ripemd-320" class="tab-pane">
                                         Generated RIPEMD-320 Hash:<br />

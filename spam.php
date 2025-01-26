@@ -5,18 +5,18 @@ head();
 if (isset($_POST['add-database'])) {
     $database   = $_POST['database'];
 	
-    $queryvalid = $mysqli->query("SELECT * FROM `psec_dnsbl-databases` WHERE `database`='$database' LIMIT 1");
+    $queryvalid = $mysqli->query("SELECT * FROM `qurik_dnsbl-databases` WHERE `database`='$database' LIMIT 1");
     $validator  = mysqli_num_rows($queryvalid);
     if ($validator > "0") {
     } else {
-        $query = $mysqli->query("INSERT INTO `psec_dnsbl-databases` (`database`) VALUES ('$database')");
+        $query = $mysqli->query("INSERT INTO `qurik_dnsbl-databases` (`database`) VALUES ('$database')");
     }
 }
 
 if (isset($_GET['delete-id'])) {
     $id    = (int) $_GET["delete-id"];
 
-    $query = $mysqli->query("DELETE FROM `psec_dnsbl-databases` WHERE id='$id'");
+    $query = $mysqli->query("DELETE FROM `qurik_dnsbl-databases` WHERE id='$id'");
 }
 
 if (isset($_POST['save'])) {
@@ -74,7 +74,7 @@ if (isset($_POST['save'])) {
 				<div class="col-md-8">
                     	    
 <?php
-$querysp = $mysqli->query("SELECT * FROM `psec_dnsbl-databases`");
+$querysp = $mysqli->query("SELECT * FROM `qurik_dnsbl-databases`");
 if ($settings['spam_protection'] == 1 && mysqli_num_rows($querysp) > 0) {
     echo '
               <div class="card card-solid card-success">
@@ -155,7 +155,7 @@ if (mysqli_num_rows($querysp) > 2) {
 									</thead>
 									<tbody>
 <?php
-$query = $mysqli->query("SELECT * FROM `psec_dnsbl-databases`");
+$query = $mysqli->query("SELECT * FROM `qurik_dnsbl-databases`");
 while ($rowd = $query->fetch_assoc()) {
     echo '
 										<tr>
@@ -198,7 +198,7 @@ while ($rowd = $query->fetch_assoc()) {
 <form class="form-horizontal form-bordered" action="" method="post">
 										<li class="list-group-item">
 											<p>Protection</p>
-                                            <input type="checkbox" name="protection" class="psec-switch" <?php
+                                            <input type="checkbox" name="protection" class="qurik-switch" <?php
 if ($settings['spam_protection'] == 1) {
     echo 'checked="checked"';
 }
@@ -207,7 +207,7 @@ if ($settings['spam_protection'] == 1) {
 										</li>
 										<li class="list-group-item">
 											<p>Logging</p>
-                                            <input type="checkbox" name="logging" class="psec-switch" <?php
+                                            <input type="checkbox" name="logging" class="qurik-switch" <?php
 if ($settings['spam_logging'] == 1) {
     echo 'checked="checked"';
 }
@@ -216,7 +216,7 @@ if ($settings['spam_logging'] == 1) {
 										</li>
                                         <li class="list-group-item">
 											<p>Mail Notifications</p>
-											<input type="checkbox" name="mail" class="psec-switch" <?php
+											<input type="checkbox" name="mail" class="qurik-switch" <?php
 if ($settings['spam_mail'] == 1) {
     echo 'checked="checked"';
 }

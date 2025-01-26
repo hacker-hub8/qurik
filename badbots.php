@@ -122,7 +122,7 @@ if ($settings['badbot_protection'] == 1 OR $settings['badbot_protection2'] == 1 
                                         Detects the <b>bad bots</b> and blocks their access to the website
                                         <br /><br />
                                         
-											<input type="checkbox" name="protection" class="psec-switch" <?php
+											<input type="checkbox" name="protection" class="qurik-switch" <?php
 if ($settings['badbot_protection'] == 1) {
     echo 'checked="checked"';
 }
@@ -137,7 +137,7 @@ if ($settings['badbot_protection'] == 1) {
                                         Detects the <b>fake bots</b> and blocks their access to the website
                                         <br /><br />
                                         
-											<input type="checkbox" name="protection2" class="psec-switch" <?php
+											<input type="checkbox" name="protection2" class="qurik-switch" <?php
 if ($settings['badbot_protection2'] == 1) {
     echo 'checked="checked"';
 }
@@ -152,7 +152,7 @@ if ($settings['badbot_protection2'] == 1) {
                                         Detects the <b>anonymous bots</b> and blocks their access to the website<br />
                                         <br /><br />
                                         
-											<input type="checkbox" name="protection3" class="psec-switch" <?php
+											<input type="checkbox" name="protection3" class="qurik-switch" <?php
 if ($settings['badbot_protection3'] == 1) {
     echo 'checked="checked"';
 }
@@ -187,7 +187,7 @@ if ($settings['badbot_protection3'] == 1) {
 <form class="form-horizontal form-bordered" action="" method="post">
 										<li class="list-group-item">
 											<p>Logging</p>
-												<input type="checkbox" name="logging" class="psec-switch" <?php
+												<input type="checkbox" name="logging" class="qurik-switch" <?php
 if ($settings['badbot_logging'] == 1) {
     echo 'checked="checked"';
 }
@@ -196,7 +196,7 @@ if ($settings['badbot_logging'] == 1) {
 										</li>
 										<li class="list-group-item">
 											<p>AutoBan</p>
-												<input type="checkbox" name="autoban" class="psec-switch" <?php
+												<input type="checkbox" name="autoban" class="qurik-switch" <?php
 if ($settings['badbot_autoban'] == 1) {
     echo 'checked="checked"';
 }
@@ -205,7 +205,7 @@ if ($settings['badbot_autoban'] == 1) {
 										</li>
                                         <li class="list-group-item">
 											<p>Mail Notifications</p>
-												<input type="checkbox" name="mail" class="psec-switch" <?php
+												<input type="checkbox" name="mail" class="qurik-switch" <?php
 if ($settings['badbot_mail'] == 1) {
     echo 'checked="checked"';
 }

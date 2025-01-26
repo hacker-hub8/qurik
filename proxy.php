@@ -300,7 +300,7 @@ if ($settings['proxy_protection'] > 0) {
 													<h5>Detection Method #2</h5>
 												</div>
 												<div class="col-md-2">
-													<input type="checkbox" name="protection2" class="psec-switch" <?php
+													<input type="checkbox" name="protection2" class="qurik-switch" <?php
 if ($settings['proxy_protection2'] == 1) {
     echo 'checked="checked"';
 }
@@ -337,7 +337,7 @@ if ($settings['proxy_protection2'] == 1) {
 <form class="form-horizontal form-bordered" action="" method="post">
 										<li class="list-group-item">
 											<p>Logging</p>
-												<input type="checkbox" name="logging" class="psec-switch" <?php
+												<input type="checkbox" name="logging" class="qurik-switch" <?php
 if ($settings['proxy_logging'] == 1) {
     echo 'checked="checked"';
 }
@@ -346,7 +346,7 @@ if ($settings['proxy_logging'] == 1) {
 										</li>
                                         <li class="list-group-item">
 											<p>Mail Notifications</p>
-												<input type="checkbox" name="mail" class="psec-switch" <?php
+												<input type="checkbox" name="mail" class="qurik-switch" <?php
 if ($settings['proxy_mail'] == 1) {
     echo 'checked="checked"';
 }

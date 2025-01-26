@@ -5,7 +5,7 @@ head();
 if (isset($_GET['id'])) {
     $id     = (int) $_GET["id"];
 
-    $result = $mysqli->query("SELECT * FROM `psec_logs` WHERE id = '$id'");
+    $result = $mysqli->query("SELECT * FROM `qurik_logs` WHERE id = '$id'");
     $row    = mysqli_fetch_assoc($result);
     if (empty($id)) {
         echo '<meta http-equiv="refresh" content="0; url=all-logs.php">';
@@ -27,10 +27,10 @@ if (isset($_GET['id'])) {
         $url      = "";
     
         if (filter_var($ip, FILTER_VALIDATE_IP)) {
-            $queryvalid = $mysqli->query("SELECT * FROM `psec_bans` WHERE ip='$ip' LIMIT 1");
+            $queryvalid = $mysqli->query("SELECT * FROM `qurik_bans` WHERE ip='$ip' LIMIT 1");
             $validator  = mysqli_num_rows($queryvalid);
                 if ($validator <= "0") {
-                    $query = $mysqli->query("INSERT INTO `psec_bans` (`ip`, `date`, `time`, `reason`, `redirect`, `url`) VALUES ('$ip', '$date', '$time', '$reason', '$redirect', '$url')");
+                    $query = $mysqli->query("INSERT INTO `qurik_bans` (`ip`, `date`, `time`, `reason`, `redirect`, `url`) VALUES ('$ip', '$date', '$time', '$reason', '$redirect', '$url')");
                 }
             }
         }
@@ -38,7 +38,7 @@ if (isset($_GET['id'])) {
         if (isset($_GET['unban-ip'])) {
             $ip    = addslashes(htmlspecialchars($ip));
 			
-            $query = $mysqli->query("DELETE FROM `psec_bans` WHERE ip='$ip'");
+            $query = $mysqli->query("DELETE FROM `qurik_bans` WHERE ip='$ip'");
         }
 ?>  
 <div class="content-wrapper" style="background-color:rgb(0, 0, 0); color:rgb(0, 0, 0);">

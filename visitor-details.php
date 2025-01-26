@@ -5,7 +5,7 @@ head();
 if (isset($_GET['id'])) {
     $id     = (int) $_GET["id"];
 
-    $result = $mysqli->query("SELECT * FROM `psec_live-traffic` WHERE id = '$id'");
+    $result = $mysqli->query("SELECT * FROM `qurik_live-traffic` WHERE id = '$id'");
     $row    = mysqli_fetch_assoc($result);
     if (empty($id)) {
         echo '<meta http-equiv="refresh" content="0; url=live-traffic.php">';

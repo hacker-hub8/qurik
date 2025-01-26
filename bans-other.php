@@ -5,7 +5,7 @@ head();
 if (isset($_GET['delete-id'])) {
     $id    = (int) $_GET["delete-id"];
 
-    $query = $mysqli->query("DELETE FROM `psec_bans-other` WHERE id='$id'");
+    $query = $mysqli->query("DELETE FROM `qurik_bans-other` WHERE id='$id'");
 }
 ?>
 <div class="content-wrapper" style="background-color:rgb(0, 0, 0); color:rgb(0, 0, 0);">
@@ -40,7 +40,7 @@ if (isset($_POST['block'])) {
     $value = addslashes($_POST['value']);
     $type  = $_POST['type'];
     
-    $queryvalid = $mysqli->query("SELECT * FROM `psec_bans-other` WHERE value='$value' and type='$type' LIMIT 1");
+    $queryvalid = $mysqli->query("SELECT * FROM `qurik_bans-other` WHERE value='$value' and type='$type' LIMIT 1");
     $validator  = mysqli_num_rows($queryvalid);
     if ($validator > "0") {
         echo '<br />
@@ -48,7 +48,7 @@ if (isset($_POST['block'])) {
                 <p><i class="fas fa-info-circle"></i> There is already such record in the database.</p>
         </div>';
     } else {
-        $query = $mysqli->query("INSERT INTO `psec_bans-other` (value, type) VALUES('$value', '$type')");
+        $query = $mysqli->query("INSERT INTO `qurik_bans-other` (value, type) VALUES('$value', '$type')");
     }
 }
 ?>
@@ -98,7 +98,7 @@ if (isset($_POST['block'])) {
 									</thead>
 									<tbody>
 <?php
-$query = $mysqli->query("SELECT * FROM `psec_bans-other` WHERE type='isp'");
+$query = $mysqli->query("SELECT * FROM `qurik_bans-other` WHERE type='isp'");
 while ($row = $query->fetch_assoc()) {
     echo '
 										<tr>
@@ -133,7 +133,7 @@ while ($row = $query->fetch_assoc()) {
 									</thead>
 									<tbody>
 <?php
-$query = $mysqli->query("SELECT * FROM `psec_bans-other` WHERE type='browser'");
+$query = $mysqli->query("SELECT * FROM `qurik_bans-other` WHERE type='browser'");
 while ($row = $query->fetch_assoc()) {
     echo '
 										<tr>
@@ -166,7 +166,7 @@ while ($row = $query->fetch_assoc()) {
 									</thead>
 									<tbody>
 <?php
-$query = $mysqli->query("SELECT * FROM `psec_bans-other` WHERE type='os'");
+$query = $mysqli->query("SELECT * FROM `qurik_bans-other` WHERE type='os'");
 while ($row = $query->fetch_assoc()) {
     echo '
 										<tr>
@@ -199,7 +199,7 @@ while ($row = $query->fetch_assoc()) {
 									</thead>
 									<tbody>
 <?php
-$query = $mysqli->query("SELECT * FROM `psec_bans-other` WHERE type='referrer'");
+$query = $mysqli->query("SELECT * FROM `qurik_bans-other` WHERE type='referrer'");
 while ($row = $query->fetch_assoc()) {
     echo '
 										<tr>

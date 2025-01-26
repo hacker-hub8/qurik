@@ -30,7 +30,7 @@ if (isset($_SERVER['HTTP_USER_AGENT'])) {
     $useragent = '';
 }
 require 'lib/useragent.class.php';
-$useragent_data = UserAgentFactoryPSec::analyze($useragent);
+$useragent_data = UserAgentFactoryqurik::analyze($useragent);
 
 //Getting Visitor Information
 if ($ip == "::1") {
@@ -116,7 +116,7 @@ if (strpos(strtolower($useragent), "yandex") !== false) {
 }
 
 // Gets the contents of cache file if it exists (valid), otherwise grabs and caches
-function psec_getcache($cache_file)
+function qurik_getcache($cache_file)
 {
     global $cache_file;
     
@@ -130,35 +130,35 @@ function psec_getcache($cache_file)
         if ($current_time - $expire_time < $file_time) {
             return file_get_contents($cache_file);
         } else {
-			return 'PSEC_NoCache';
+			return 'qurik_NoCache';
 		}
     } else {
-		return 'PSEC_NoCache';
+		return 'qurik_NoCache';
 	}
 }
 
-function psec_logging($mysqli, $type)
+function qurik_logging($mysqli, $type)
 {
     global $ip, $page, $querya, $date, $time, $browser, $browser_code, $os, $os_code, $useragent, $referer;
     
-    $queryvalid = $mysqli->query("SELECT ip, page, query, type, date FROM `psec_logs` WHERE ip='$ip' and page='$page' and query='$querya' and type='$type' and date='$date' LIMIT 1");
+    $queryvalid = $mysqli->query("SELECT ip, page, query, type, date FROM `qurik_logs` WHERE ip='$ip' and page='$page' and query='$querya' and type='$type' and date='$date' LIMIT 1");
     if ($queryvalid->num_rows <= 0) {
         include "lib/ip_details.php";
-        $log = $mysqli->query("INSERT INTO `psec_logs` (`ip`, `date`, `time`, `page`, `query`, `type`, `browser`, `browser_code`, `os`, `os_code`, `country`, `country_code`, `region`, `city`, `latitude`, `longitude`, `isp`, `useragent`, `referer_url`) VALUES ('$ip', '$date', '$time', '$page', '$querya', '$type', '$browser', '$browser_code', '$os', '$os_code', '$country', '$country_code', '$region', '$city', '$latitude', '$longitude', '$isp', '$useragent', '$referer')");
+        $log = $mysqli->query("INSERT INTO `qurik_logs` (`ip`, `date`, `time`, `page`, `query`, `type`, `browser`, `browser_code`, `os`, `os_code`, `country`, `country_code`, `region`, `city`, `latitude`, `longitude`, `isp`, `useragent`, `referer_url`) VALUES ('$ip', '$date', '$time', '$page', '$querya', '$type', '$browser', '$browser_code', '$os', '$os_code', '$country', '$country_code', '$region', '$city', '$latitude', '$longitude', '$isp', '$useragent', '$referer')");
     }
 }
 
-function psec_autoban($mysqli, $type)
+function qurik_autoban($mysqli, $type)
 {
     global $ip, $date, $time;
     
-    $bansvalid = $mysqli->query("SELECT ip FROM `psec_bans` WHERE ip='$ip' LIMIT 1");
+    $bansvalid = $mysqli->query("SELECT ip FROM `qurik_bans` WHERE ip='$ip' LIMIT 1");
     if ($bansvalid->num_rows <= 0) {
-        $log = $mysqli->query("INSERT INTO `psec_bans` (ip, date, time, reason, autoban) VALUES ('$ip', '$date', '$time', '$type', '1')");
+        $log = $mysqli->query("INSERT INTO `qurik_bans` (ip, date, time, reason, autoban) VALUES ('$ip', '$date', '$time', '$type', '1')");
     }
 }
 
-function psec_mail($mysqli, $type)
+function qurik_mail($mysqli, $type)
 {
     global $ip, $date, $time, $browser, $os, $page, $referer, $to, $settings;
     
@@ -175,7 +175,7 @@ function psec_mail($mysqli, $type)
 					<p>Page:  <strong>' . $page . '</strong> </p>
                 	<p>Referer URL:  <strong>' . $referer . '</strong> </p>
                 	<p>Site URL:  <strong>' . $settings['site_url'] . '</strong> </p>
-                	<p>qurik URL:  <strong>' . $settings['projectsecurity_path'] . '</strong> </p>
+                	<p>qurik URL:  <strong>' . $settings['qurik_path'] . '</strong> </p>
 				';
     $headers = 'MIME-Version: 1.0' . "\r\n";
     $headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";

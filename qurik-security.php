@@ -3,8 +3,8 @@ include "config.php";
 include "modules/core.php";
 
 // Checking if the visitor is in the Whitelist
-$wquery  = $mysqli->query("SELECT ip FROM `psec_ip-whitelist` WHERE ip='$ip' LIMIT 1");
-$wfquery = $mysqli->query("SELECT path FROM `psec_file-whitelist` WHERE path='$script_name' LIMIT 1");
+$wquery  = $mysqli->query("SELECT ip FROM `qurik_ip-whitelist` WHERE ip='$ip' LIMIT 1");
+$wfquery = $mysqli->query("SELECT path FROM `qurik_file-whitelist` WHERE path='$script_name' LIMIT 1");
 if ($wquery->num_rows <= 0 && $wfquery->num_rows <= 0) {
     
     // Error Reporting

@@ -1,6 +1,6 @@
 <?php
 // qurik version
-$psec_version = "1.1.0";
+$qurik_version = "1.1.0";
 
 $configfile = 'config.php';
 if (!file_exists($configfile)) {
@@ -40,7 +40,7 @@ function get_banned($ip)
 {
     include 'config.php';
 
-    $query = $mysqli->query("SELECT * FROM `psec_bans` WHERE ip='$ip' LIMIT 1");
+    $query = $mysqli->query("SELECT * FROM `qurik_bans` WHERE ip='$ip' LIMIT 1");
     $count = mysqli_num_rows($query);
     if ($count > 0) {
         return 1;
@@ -53,7 +53,7 @@ function get_bannedid($ip)
 {
     include 'config.php';
 
-    $query = $mysqli->query("SELECT * FROM `psec_bans` WHERE ip='$ip' LIMIT 1");
+    $query = $mysqli->query("SELECT * FROM `qurik_bans` WHERE ip='$ip' LIMIT 1");
     $row   = mysqli_fetch_array($query);
     return $row['id'];
 }
@@ -86,7 +86,7 @@ function head()
 	
 	<!-- Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.2.0/css/adminlte.min.css" rel="stylesheet">
-	<link href="assets/css/psec.css" rel="stylesheet">
+	<link href="assets/css/qurik.css" rel="stylesheet">
     
     <!-- OverlayScrollbars -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/overlayscrollbars/1.13.3/css/OverlayScrollbars.min.css" rel="stylesheet">
@@ -309,7 +309,7 @@ if ($settings['dark_mode'] == 1) {
 ?>">
               <i class="fas fa-keyboard"></i>&nbsp; <p>Spam
 <?php
-    $querysp = $mysqli->query("SELECT * FROM `psec_dnsbl-databases`");
+    $querysp = $mysqli->query("SELECT * FROM `qurik_dnsbl-databases`");
     if ($settings['spam_protection'] == 1 && mysqli_num_rows($querysp) > 0) {
         echo '<span class="right badge badge-success">ON</span>';
     } else {
@@ -331,7 +331,7 @@ if ($settings['dark_mode'] == 1) {
 ?>">
               <i class="fas fa-filter"></i>&nbsp; <p>Bad Words
 <?php
-    $queryfc = $mysqli->query("SELECT * FROM `psec_bad-words` LIMIT 1");
+    $queryfc = $mysqli->query("SELECT * FROM `qurik_bad-words` LIMIT 1");
     $countfc = mysqli_num_rows($queryfc);
     if ($countfc > 0) {
         echo '<span class="right badge badge-success">ON</span>';
@@ -377,15 +377,15 @@ if ($settings['dark_mode'] == 1) {
         </li>
         
 <?php
-    $lquery1 = $mysqli->query("SELECT * FROM `psec_logs`");
+    $lquery1 = $mysqli->query("SELECT * FROM `qurik_logs`");
     $lcount1 = mysqli_num_rows($lquery1);
-    $lquery2 = $mysqli->query("SELECT * FROM `psec_logs` WHERE `type`='SQLi'");
+    $lquery2 = $mysqli->query("SELECT * FROM `qurik_logs` WHERE `type`='SQLi'");
     $lcount2 = mysqli_num_rows($lquery2);
-    $lquery3 = $mysqli->query("SELECT * FROM `psec_logs` WHERE `type`='Bad Bot' or `type`='Fake Bot' or type='Missing User-Agent header' or type='Missing header Accept' or type='Invalid IP Address header'");
+    $lquery3 = $mysqli->query("SELECT * FROM `qurik_logs` WHERE `type`='Bad Bot' or `type`='Fake Bot' or type='Missing User-Agent header' or type='Missing header Accept' or type='Invalid IP Address header'");
     $lcount3 = mysqli_num_rows($lquery3);
-    $lquery4 = $mysqli->query("SELECT * FROM `psec_logs` WHERE `type`='Proxy'");
+    $lquery4 = $mysqli->query("SELECT * FROM `qurik_logs` WHERE `type`='Proxy'");
     $lcount4 = mysqli_num_rows($lquery4);
-    $lquery5 = $mysqli->query("SELECT * FROM `psec_logs` WHERE `type`='Spammer'");
+    $lquery5 = $mysqli->query("SELECT * FROM `qurik_logs` WHERE `type`='Spammer'");
     $lcount5 = mysqli_num_rows($lquery5);
 ?>
         <li class="nav-item has-treeview <?php
@@ -460,16 +460,16 @@ if ($settings['dark_mode'] == 1) {
         </li>
         
 <?php
-    $bquery1 = $mysqli->query("SELECT * FROM `psec_bans`");
+    $bquery1 = $mysqli->query("SELECT * FROM `qurik_bans`");
     $bcount1 = mysqli_num_rows($bquery1);
 
-    $bquery2 = $mysqli->query("SELECT * FROM `psec_bans-country`");
+    $bquery2 = $mysqli->query("SELECT * FROM `qurik_bans-country`");
     $bcount2 = mysqli_num_rows($bquery2);
 
-    $bquery3 = $mysqli->query("SELECT * FROM `psec_bans-ranges`");
+    $bquery3 = $mysqli->query("SELECT * FROM `qurik_bans-ranges`");
     $bcount3 = mysqli_num_rows($bquery3);
 
-    $bquery4 = $mysqli->query("SELECT * FROM `psec_bans-other`");
+    $bquery4 = $mysqli->query("SELECT * FROM `qurik_bans-other`");
     $bcount4 = mysqli_num_rows($bquery4);
 ?>
         <li class="nav-item has-treeview <?php
@@ -712,7 +712,7 @@ function footer()
 {
     include 'config.php';
 	
-	global $psec_version;
+	global $qurik_version;
 ?>
         <script>
      document.addEventListener('DOMContentLoaded', function() {
@@ -753,7 +753,7 @@ function footer()
     
     <strong style="color: white;">&copy; <?php
     echo date("Y");
-?> <a href="" target="_blank">Qurik</a> v<?php echo $psec_version;
+?> <a href="" target="_blank">Qurik</a> v<?php echo $qurik_version;
 ?></strong><br>
 <h6 style="color: white;">Made with ❤️ by <a href="https://www.instagram.com/hacker_hub8" target="_blank">hackerhub8</a></h6>
 </center>
@@ -769,7 +769,7 @@ function footer()
 	
 	<!--AdminLTE-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.2.0/js/adminlte.min.js"></script>
-	<script src="assets/js/psec.js"></script>
+	<script src="assets/js/qurik.js"></script>
     
     <!--OverlayScrollbars-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/overlayscrollbars/1.13.3/js/jquery.overlayScrollbars.min.js"></script>

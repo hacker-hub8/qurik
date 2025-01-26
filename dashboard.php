@@ -61,13 +61,13 @@ foreach ($files as $file) {
 <?php
 $date   = date('d F Y');
 
-$query  = $mysqli->query("SELECT * FROM `psec_logs` WHERE `date`='$date' AND `type`='SQLi'");
+$query  = $mysqli->query("SELECT * FROM `qurik_logs` WHERE `date`='$date' AND `type`='SQLi'");
 $count  = mysqli_num_rows($query);
-$query2 = $mysqli->query("SELECT * FROM `psec_logs` WHERE `date`='$date' AND (`type`='Bad Bot' OR `type`='Fake Bot' OR `type`='Missing User-Agent header' OR `type`='Missing header Accept' OR `type`='Invalid IP Address header')");
+$query2 = $mysqli->query("SELECT * FROM `qurik_logs` WHERE `date`='$date' AND (`type`='Bad Bot' OR `type`='Fake Bot' OR `type`='Missing User-Agent header' OR `type`='Missing header Accept' OR `type`='Invalid IP Address header')");
 $count2 = mysqli_num_rows($query2);
-$query3 = $mysqli->query("SELECT * FROM `psec_logs` WHERE `date`='$date' AND `type`='Proxy'");
+$query3 = $mysqli->query("SELECT * FROM `qurik_logs` WHERE `date`='$date' AND `type`='Proxy'");
 $count3 = mysqli_num_rows($query3);
-$query4 = $mysqli->query("SELECT * FROM `psec_logs` WHERE `date`='$date' AND `type`='Spammer'");
+$query4 = $mysqli->query("SELECT * FROM `qurik_logs` WHERE `date`='$date' AND `type`='Spammer'");
 $count4 = mysqli_num_rows($query4);
 ?>
 <div class="row">
@@ -139,13 +139,13 @@ $count4 = mysqli_num_rows($query4);
 					
 					    </div>
 <?php
-$querym  = $mysqli->query("SELECT * FROM `psec_logs` WHERE `type`='SQLi'");
+$querym  = $mysqli->query("SELECT * FROM `qurik_logs` WHERE `type`='SQLi'");
 $countm  = mysqli_num_rows($querym);
-$querym2 = $mysqli->query("SELECT * FROM `psec_logs` WHERE `type`='Bad Bot' or `type`='Fake Bot' or type='Missing User-Agent header' or type='Missing header Accept' or type='Invalid IP Address header'");
+$querym2 = $mysqli->query("SELECT * FROM `qurik_logs` WHERE `type`='Bad Bot' or `type`='Fake Bot' or type='Missing User-Agent header' or type='Missing header Accept' or type='Invalid IP Address header'");
 $countm2 = mysqli_num_rows($querym2);
-$querym3 = $mysqli->query("SELECT * FROM `psec_logs` WHERE `type`='Proxy'");
+$querym3 = $mysqli->query("SELECT * FROM `qurik_logs` WHERE `type`='Proxy'");
 $countm3 = mysqli_num_rows($querym3);
-$querym4 = $mysqli->query("SELECT * FROM `psec_logs` WHERE `type`='Spammer'");
+$querym4 = $mysqli->query("SELECT * FROM `qurik_logs` WHERE `type`='Spammer'");
 $countm4 = mysqli_num_rows($querym4);
 ?>
                         <div class="col-lg-5">
@@ -209,22 +209,22 @@ echo $countm4;
 @$date = @date('d F Y');
 @$ctime = @date("H:i", strtotime('-30 seconds'));
 
-$tsquery1 = $mysqli->query("SELECT id FROM `psec_live-traffic` WHERE `date`='$date' AND `time`>='$ctime'");
+$tsquery1 = $mysqli->query("SELECT id FROM `qurik_live-traffic` WHERE `date`='$date' AND `time`>='$ctime'");
 $tscount1 = $tsquery1->num_rows;
-$tsquery2 = $mysqli->query("SELECT id FROM `psec_live-traffic` WHERE `date`='$date' AND `uniquev`=1");
+$tsquery2 = $mysqli->query("SELECT id FROM `qurik_live-traffic` WHERE `date`='$date' AND `uniquev`=1");
 $tscount2 = $tsquery2->num_rows;
-$tsquery3 = $mysqli->query("SELECT id FROM `psec_live-traffic` WHERE `date`='$date'");
+$tsquery3 = $mysqli->query("SELECT id FROM `qurik_live-traffic` WHERE `date`='$date'");
 $tscount3 = $tsquery3->num_rows;
-$tsquery4 = $mysqli->query("SELECT id FROM `psec_live-traffic` WHERE `date`='$date' AND `uniquev`=1 AND `bot`=1");
+$tsquery4 = $mysqli->query("SELECT id FROM `qurik_live-traffic` WHERE `date`='$date' AND `uniquev`=1 AND `bot`=1");
 $tscount4 = $tsquery4->num_rows;
 
 //Month Stats
 @$mdate = @date('F Y');
-$msquery1 = $mysqli->query("SELECT id FROM `psec_live-traffic` WHERE `date` LIKE '%$mdate' AND `uniquev`=1");
+$msquery1 = $mysqli->query("SELECT id FROM `qurik_live-traffic` WHERE `date` LIKE '%$mdate' AND `uniquev`=1");
 $mscount1 = $msquery1->num_rows;
-$msquery2 = $mysqli->query("SELECT id FROM `psec_live-traffic` WHERE `date` LIKE '%$mdate'");
+$msquery2 = $mysqli->query("SELECT id FROM `qurik_live-traffic` WHERE `date` LIKE '%$mdate'");
 $mscount2 = $msquery2->num_rows;
-$msquery3 = $mysqli->query("SELECT id FROM `psec_live-traffic` WHERE `date` LIKE '%$mdate' AND `uniquev`=1 AND `bot`=1");
+$msquery3 = $mysqli->query("SELECT id FROM `qurik_live-traffic` WHERE `date` LIKE '%$mdate' AND `uniquev`=1 AND `bot`=1");
 $mscount3 = $msquery3->num_rows;
 ?>
                     <div class="content">
@@ -426,7 +426,7 @@ if ($settings['proxy_protection'] == 1 OR $settings['proxy_protection2'] == 1) {
 						    <center>
 							<strong><i class="fas fa-keyboard"></i> Spam</strong><br />Protection<br /><hr />
 <?php
-$querysp = $mysqli->query("SELECT * FROM `psec_dnsbl-databases`");
+$querysp = $mysqli->query("SELECT * FROM `qurik_dnsbl-databases`");
 if ($settings['spam_protection'] == 1 && mysqli_num_rows($querysp) > 0) {
     echo '
 					        <h4><span class="badge badge-success"><i class="fas fa-check"></i> ON</span></h4>
@@ -658,7 +658,7 @@ echo $pstatus;
              			        </div>
             			        <div class="card-body">
 <?php
-$query = $mysqli->query("SELECT * FROM `psec_logs` ORDER BY id DESC LIMIT 2");
+$query = $mysqli->query("SELECT * FROM `qurik_logs` ORDER BY id DESC LIMIT 2");
 $count = mysqli_num_rows($query);
 if ($count > 0) {
     while ($row = $query->fetch_assoc()) {
@@ -714,7 +714,7 @@ if ($count > 0) {
              			        </div>
             			        <div class="card-body">
 <?php
-$query = $mysqli->query("SELECT * FROM `psec_bans` ORDER BY id DESC LIMIT 2");
+$query = $mysqli->query("SELECT * FROM `qurik_bans` ORDER BY id DESC LIMIT 2");
 $count = mysqli_num_rows($query);
 if ($count > 0) {
     while ($row = $query->fetch_assoc()) {
@@ -768,7 +768,7 @@ if ($count > 0) {
 				</thead>
 				<tbody>
 <?php
-$query = $mysqli->query("SELECT id FROM `psec_logs`");
+$query = $mysqli->query("SELECT id FROM `qurik_logs`");
 $count = mysqli_num_rows($query);
 ?>
                     <tr>
@@ -779,7 +779,7 @@ echo $count;
                     </tr>
 <?php
 $date2  = date("d F Y");
-$query2 = $mysqli->query("SELECT id FROM `psec_logs` WHERE `date`='$date2'");
+$query2 = $mysqli->query("SELECT id FROM `qurik_logs` WHERE `date`='$date2'");
 $count2 = mysqli_num_rows($query2);
 ?>
                     <tr>
@@ -790,7 +790,7 @@ echo $count2;
                     </tr>
 <?php
 $date3  = date("F Y");
-$query3 = $mysqli->query("SELECT id FROM `psec_logs` WHERE `date` LIKE '% $date3'");
+$query3 = $mysqli->query("SELECT id FROM `qurik_logs` WHERE `date` LIKE '% $date3'");
 $count3 = mysqli_num_rows($query3);
 ?>
 					<tr>
@@ -801,7 +801,7 @@ echo $count3;
                     </tr>
 <?php
 $date4  = date("Y");
-$query4 = $mysqli->query("SELECT id FROM `psec_logs` WHERE `date` LIKE '% $date4'");
+$query4 = $mysqli->query("SELECT id FROM `qurik_logs` WHERE `date` LIKE '% $date4'");
 $count4 = mysqli_num_rows($query4);
 ?>
 					<tr>
@@ -819,7 +819,7 @@ echo $count4;
 				</thead>
 				<tbody>
 <?php
-$query5 = $mysqli->query("SELECT id FROM `psec_bans`");
+$query5 = $mysqli->query("SELECT id FROM `qurik_bans`");
 $count5 = mysqli_num_rows($query5);
 ?>
                     <tr>
@@ -830,7 +830,7 @@ echo $count5;
                     </tr>
 <?php
 $date6  = date("d F Y");
-$query6 = $mysqli->query("SELECT id FROM `psec_bans` WHERE `date`='$date6'");
+$query6 = $mysqli->query("SELECT id FROM `qurik_bans` WHERE `date`='$date6'");
 $count6 = mysqli_num_rows($query6);
 ?>
                     <tr>
@@ -841,7 +841,7 @@ echo $count6;
                     </tr>
 <?php
 $date7  = date("F Y");
-$query7 = $mysqli->query("SELECT id FROM `psec_bans` WHERE `date` LIKE '% $date7'");
+$query7 = $mysqli->query("SELECT id FROM `qurik_bans` WHERE `date` LIKE '% $date7'");
 $count7 = mysqli_num_rows($query7);
 ?>
 					<tr>
@@ -852,7 +852,7 @@ echo $count7;
                     </tr>
 <?php
 $date8  = date("Y");
-$query8 = $mysqli->query("SELECT id FROM `psec_bans` WHERE `date` LIKE '% $date8'");
+$query8 = $mysqli->query("SELECT id FROM `qurik_bans` WHERE `date` LIKE '% $date8'");
 $count8 = mysqli_num_rows($query8);
 ?>
 					<tr>
@@ -1084,7 +1084,7 @@ $countries = array(
 );
 
 foreach ($countries as $country) {
-    $log_result = $mysqli->query("SELECT * FROM `psec_logs` WHERE `country` LIKE '%$country%'");
+    $log_result = $mysqli->query("SELECT * FROM `qurik_logs` WHERE `country` LIKE '%$country%'");
     $log_rows   = mysqli_num_rows($log_result);
     $lgrow      = mysqli_fetch_assoc($log_result);
     
@@ -1110,12 +1110,12 @@ foreach ($countries as $country) {
 
                     <?php
                    $datetod = strtotime(date('d F Y', strtotime('-30 days')));
-$query2 = $mysqli->query("SELECT id, date, ip FROM `psec_live-traffic` ORDER BY id ASC");
+$query2 = $mysqli->query("SELECT id, date, ip FROM `qurik_live-traffic` ORDER BY id ASC");
 while ($row2 = $query2->fetch_assoc()) {
 	if (strtotime($row2['date']) < $datetod) {
 		
 		$id     = $row2['id'];
-		$query3 = $mysqli->query("DELETE FROM `psec_live-traffic` WHERE id = '$id'");
+		$query3 = $mysqli->query("DELETE FROM `qurik_live-traffic` WHERE id = '$id'");
 		
 		// Delete cache file
 		if(is_file('modules/cache/live-traffic/' . $row2['ip'] . '.json')) {
@@ -1144,7 +1144,7 @@ if (isset($_GET['disable'])) {
 }
 
 if (isset($_GET['delete-all'])) {
-    $query = $mysqli->query("TRUNCATE TABLE `psec_live-traffic`");
+    $query = $mysqli->query("TRUNCATE TABLE `qurik_live-traffic`");
 }
 ?>
                    <div class="content">
@@ -1189,7 +1189,7 @@ if ($settings['live_traffic'] == 0) {
 								</thead>
 								<tbody>
 <?php
-$query = $mysqli->query("SELECT id, bot, ip, country, country_code, browser, browser_code, os, os_code, domain, request_uri, date, time FROM `psec_live-traffic` ORDER BY id DESC");
+$query = $mysqli->query("SELECT id, bot, ip, country, country_code, browser, browser_code, os, os_code, domain, request_uri, date, time FROM `qurik_live-traffic` ORDER BY id DESC");
 while ($row = $query->fetch_assoc()) {
     echo '
 									<tr>

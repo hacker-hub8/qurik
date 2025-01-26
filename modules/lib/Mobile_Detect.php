@@ -214,7 +214,7 @@
  * @method bool isWatch()
 
  */
-class Mobile_DetectPSec
+class Mobile_Detectqurik
 {
     /**
      * Mobile detection type.

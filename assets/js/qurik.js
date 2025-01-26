@@ -1,7 +1,7 @@
 (function($) { // Avoid conflicts with other libraries
 'use strict';
 
-var elems = Array.prototype.slice.call(document.querySelectorAll('.psec-switch'));
+var elems = Array.prototype.slice.call(document.querySelectorAll('.qurik-switch'));
 
 elems.forEach(function(html) {
   var switchery = new Switchery(html, {secondaryColor: 'red'});

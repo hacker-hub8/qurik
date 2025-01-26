@@ -85,7 +85,7 @@ echo $settings['email'];
 							</div><hr />
                             <div class="form-group">
 								<label class="control-label">qurik</label><br />
-								<input type="checkbox" name="qurik" class="psec-switch" <?php
+								<input type="checkbox" name="qurik" class="qurik-switch" <?php
 if ($settings['qurik'] == 1) {
     echo 'checked';
 }
@@ -94,7 +94,7 @@ if ($settings['qurik'] == 1) {
                             </div><hr /><br />
                             <div class="form-group">
 								<label class="control-label">Mail Notifications</label><br />
-                                <input type="checkbox" name="mail_notifications" class="psec-switch" <?php
+                                <input type="checkbox" name="mail_notifications" class="qurik-switch" <?php
 if ($settings['mail_notifications'] == 1) {
     echo 'checked';
 }
@@ -103,7 +103,7 @@ if ($settings['mail_notifications'] == 1) {
                             </div><hr /><br />
                             <div class="form-group">
 								<label class="control-label">Test Integration</label><br />
-                                <input type="checkbox" name="test_integration" class="psec-switch" <?php
+                                <input type="checkbox" name="test_integration" class="qurik-switch" <?php
 if ($settings['test_integration'] == 1) {
     echo 'checked';
 }
@@ -113,7 +113,7 @@ if ($settings['test_integration'] == 1) {
                             </div><hr /><br />
 							<div class="form-group">
                                 <label class="control-label">Dark Mode Theme</label><br />
-								<input type="checkbox" name="dark_mode" class="psec-switch" <?php
+								<input type="checkbox" name="dark_mode" class="qurik-switch" <?php
 if ($settings['dark_mode'] == 1) {
     echo 'checked';
 }

@@ -15,10 +15,10 @@ if (isset($_SERVER['HTTPS'])) {
 }
 $settings['site_url']             = $htp . '://' . $_SERVER['SERVER_NAME'];
 $fullpath                         = "$htp://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-$settings['projectsecurity_path'] = substr($fullpath, 0, strpos($fullpath, '/install'));
-$settings['sqli_redirect']        = $settings['projectsecurity_path'] . '/pages/blocked.php';
-$settings['proxy_redirect']       = $settings['projectsecurity_path'] . '/pages/proxy.php';
-$settings['spam_redirect']        = $settings['projectsecurity_path'] . '/pages/spammer.php';
+$settings['qurik_path'] = substr($fullpath, 0, strpos($fullpath, '/install'));
+$settings['sqli_redirect']        = $settings['qurik_path'] . '/pages/blocked.php';
+$settings['proxy_redirect']       = $settings['qurik_path'] . '/pages/proxy.php';
+$settings['spam_redirect']        = $settings['qurik_path'] . '/pages/spammer.php';
 $settings['username']             = $_SESSION['username'];
 $settings['password']             = hash('sha256', $_SESSION['password']);
 
@@ -80,8 +80,8 @@ if ($db) {
 (<b>Examples</b>: <i>index.php file; database config (connection) file; functions file; header file; core file that is included in all other .php files.<i>)
 <br /><br />
 	<kbd>
-	    include "security/config.php";<br />
-	    include "security/qurik-security.php";
+	    include "qurik/config.php";<br />
+	    include "qurik/qurik-security.php";
 	</kbd>
 </div>
     

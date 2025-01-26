@@ -5,11 +5,11 @@ head();
 if (isset($_GET['delete-id'])) {
     $id    = (int) $_GET["delete-id"];
 
-    $query = $mysqli->query("DELETE FROM `psec_logs` WHERE id='$id'");
+    $query = $mysqli->query("DELETE FROM `qurik_logs` WHERE id='$id'");
 }
 
 if (isset($_GET['delete-all'])) {
-    $query = $mysqli->query("DELETE FROM `psec_logs` WHERE type='Spammer'");
+    $query = $mysqli->query("DELETE FROM `qurik_logs` WHERE type='Spammer'");
 }
 ?>
 <div class="content-wrapper" style="background-color:rgb(0, 0, 0); color:rgb(0, 0, 0);">
@@ -61,7 +61,7 @@ if (isset($_GET['delete-all'])) {
 									</thead>
 									<tbody>
 <?php
-$sql = $mysqli->query("SELECT id, ip, date, time, browser, browser_code, os, os_code, country, country_code, type FROM `psec_logs` WHERE type='Spammer' ORDER by id DESC");
+$sql = $mysqli->query("SELECT id, ip, date, time, browser, browser_code, os, os_code, country, country_code, type FROM `qurik_logs` WHERE type='Spammer' ORDER by id DESC");
 while ($row = mysqli_fetch_assoc($sql)) {
     echo '
 										<tr>

@@ -3,13 +3,13 @@ require "core.php";
 head();
 
 if (isset($_GET['delete-all'])) {
-    $query = $mysqli->query("TRUNCATE TABLE `psec_bans-ranges`");
+    $query = $mysqli->query("TRUNCATE TABLE `qurik_bans-ranges`");
 }
 
 if (isset($_GET['delete-id'])) {
     $id    = (int) $_GET["delete-id"];
 
-    $query = $mysqli->query("DELETE FROM `psec_bans-ranges` WHERE id='$id'");
+    $query = $mysqli->query("DELETE FROM `qurik_bans-ranges` WHERE id='$id'");
 }
 ?>
 <div class="content-wrapper" style="background-color:rgb(0, 0, 0); color:rgb(0, 0, 0);">
@@ -42,7 +42,7 @@ if (isset($_GET['delete-id'])) {
 if (isset($_POST['ban-iprange'])) {
     $ip_range = addslashes(htmlspecialchars($_POST['ip_range']));
     
-    $queryvalid = $mysqli->query("SELECT * FROM `psec_bans-ranges` WHERE ip_range='$ip_range' LIMIT 1");
+    $queryvalid = $mysqli->query("SELECT * FROM `qurik_bans-ranges` WHERE ip_range='$ip_range' LIMIT 1");
     $validator  = mysqli_num_rows($queryvalid);
     if ($validator > "0") {
         echo '<br />
@@ -50,7 +50,7 @@ if (isset($_POST['ban-iprange'])) {
                 <p><i class="fas fa-info-circle"></i> This <strong>IP Range</strong> is already banned.</p>
         </div>';
     } else {
-        $query = $mysqli->query("INSERT INTO `psec_bans-ranges` (`ip_range`) VALUES ('$ip_range')");
+        $query = $mysqli->query("INSERT INTO `qurik_bans-ranges` (`ip_range`) VALUES ('$ip_range')");
     }
 }
 ?>
@@ -62,7 +62,7 @@ if (isset($_POST['ban-iprange'])) {
 if (isset($_GET['edit-id'])) {
     $id    = (int) $_GET["edit-id"];
     
-    $result = $mysqli->query("SELECT * FROM `psec_bans-ranges` WHERE id = '$id'");
+    $result = $mysqli->query("SELECT * FROM `qurik_bans-ranges` WHERE id = '$id'");
     $row    = mysqli_fetch_assoc($result);
 	
     if (empty($id) || mysqli_num_rows($result) == 0) {
@@ -73,7 +73,7 @@ if (isset($_GET['edit-id'])) {
 	if (isset($_POST['edit-ban'])) {
         $ip_range = addslashes(htmlspecialchars($_POST['ip_range']));
         
-        $update = $mysqli->query("UPDATE `psec_bans-ranges` SET ip_range = '$ip_range' WHERE id='$id'");
+        $update = $mysqli->query("UPDATE `qurik_bans-ranges` SET ip_range = '$ip_range' WHERE id='$id'");
     }
 ?>         
 <form class="form-horizontal" action="" method="post">
@@ -118,7 +118,7 @@ if (isset($_GET['edit-id'])) {
 									</thead>
 									<tbody>
 <?php
-$query = $mysqli->query("SELECT * FROM `psec_bans-ranges`");
+$query = $mysqli->query("SELECT * FROM `qurik_bans-ranges`");
 while ($row = $query->fetch_assoc()) {
     echo '
 										<tr>

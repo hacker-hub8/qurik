@@ -155,7 +155,7 @@ if ($settings['sqli_protection'] == 1) {
                                         Sanitizes infected requests
                                         <br /><br /><br />
                                         
-											<input type="checkbox" name="protection2" class="psec-switch" <?php
+											<input type="checkbox" name="protection2" class="qurik-switch" <?php
 if ($settings['sqli_protection2'] == 1) {
     echo 'checked="checked"';
 }
@@ -170,7 +170,7 @@ if ($settings['sqli_protection2'] == 1) {
                                         Detecting and blocking clickjacking attempts
                                         <br /><br />
                                         
-											<input type="checkbox" name="protection3" class="psec-switch" <?php
+											<input type="checkbox" name="protection3" class="qurik-switch" <?php
 if ($settings['sqli_protection3'] == 1) {
     echo 'checked="checked"';
 }
@@ -185,7 +185,7 @@ if ($settings['sqli_protection3'] == 1) {
                                         Hides the PHP version to remote requests
                                         <br /><br />
                                         
-											<input type="checkbox" name="protection6" class="psec-switch" <?php
+											<input type="checkbox" name="protection6" class="qurik-switch" <?php
 if ($settings['sqli_protection6'] == 1) {
     echo 'checked="checked"';
 }
@@ -202,7 +202,7 @@ if ($settings['sqli_protection6'] == 1) {
                                         Prevents attacks based on MIME-type mismatch
                                         <br /><br />
                                         
-											<input type="checkbox" name="protection4" class="psec-switch" <?php
+											<input type="checkbox" name="protection4" class="qurik-switch" <?php
 if ($settings['sqli_protection4'] == 1) {
     echo 'checked="checked"';
 }
@@ -217,7 +217,7 @@ if ($settings['sqli_protection4'] == 1) {
                                         Forces the website to use secure connection (HTTPS)
                                         <br /><br /><br />
                                         
-											<input type="checkbox" name="protection5" class="psec-switch" <?php
+											<input type="checkbox" name="protection5" class="qurik-switch" <?php
 if ($settings['sqli_protection5'] == 1) {
     echo 'checked="checked"';
 }
@@ -242,7 +242,7 @@ if ($settings['sqli_protection5'] == 1) {
                                         Basic sanitization of $_POST and $_GET variables based on PHP FILTER_SANITIZE_SPECIAL_CHARS filter.
                                         <br /><br />
                                         
-											<input type="checkbox" name="protection7" class="psec-switch" <?php
+											<input type="checkbox" name="protection7" class="qurik-switch" <?php
 if ($settings['sqli_protection7'] == 1) {
     echo 'checked="checked"';
 }
@@ -257,7 +257,7 @@ if ($settings['sqli_protection7'] == 1) {
                                         Advanced sanitization of $_POST, $_GET, $_REQUEST, $_COOKIE and $_SESSION variables based on custom filters.
                                         <br /><br />
                                         
-											<input type="checkbox" name="protection8" class="psec-switch" <?php
+											<input type="checkbox" name="protection8" class="qurik-switch" <?php
 if ($settings['sqli_protection8'] == 1) {
     echo 'checked="checked"';
 }
@@ -291,7 +291,7 @@ if ($settings['sqli_protection8'] == 1) {
 <form class="form-horizontal form-bordered" action="" method="post">
 										<li class="list-group-item">
 											<p>Protection</p>
-														<input type="checkbox" name="protection" class="psec-switch" <?php
+														<input type="checkbox" name="protection" class="qurik-switch" <?php
 if ($settings['sqli_protection'] == 1) {
     echo 'checked="checked"';
 }
@@ -300,7 +300,7 @@ if ($settings['sqli_protection'] == 1) {
 										</li>
 										<li class="list-group-item">
 											<p>Logging</p>
-														<input type="checkbox" name="logging" class="psec-switch" <?php
+														<input type="checkbox" name="logging" class="qurik-switch" <?php
 if ($settings['sqli_logging'] == 1) {
     echo 'checked="checked"';
 }
@@ -309,7 +309,7 @@ if ($settings['sqli_logging'] == 1) {
 										</li>
 										<li class="list-group-item">
 											<p>AutoBan</p>
-														<input type="checkbox" name="autoban" class="psec-switch" <?php
+														<input type="checkbox" name="autoban" class="qurik-switch" <?php
 if ($settings['sqli_autoban'] == 1) {
     echo 'checked="checked"';
 }
@@ -318,7 +318,7 @@ if ($settings['sqli_autoban'] == 1) {
 										</li>
                                         <li class="list-group-item">
 											<p>Mail Notifications</p>
-														<input type="checkbox" name="mail" class="psec-switch" <?php
+														<input type="checkbox" name="mail" class="qurik-switch" <?php
 if ($settings['sqli_mail'] == 1) {
     echo 'checked="checked"';
 }

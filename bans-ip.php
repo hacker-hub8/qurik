@@ -3,13 +3,13 @@ require "core.php";
 head();
 
 if (isset($_GET['delete-all'])) {
-    $query = $mysqli->query("TRUNCATE TABLE `psec_bans`");
+    $query = $mysqli->query("TRUNCATE TABLE `qurik_bans`");
 }
 
 if (isset($_GET['delete-id'])) {
     $id    = (int) $_GET["delete-id"];
 
-    $query = $mysqli->query("DELETE FROM `psec_bans` WHERE id='$id'");
+    $query = $mysqli->query("DELETE FROM `qurik_bans` WHERE id='$id'");
 }
 ?>
 <div class="content-wrapper" style="background-color:rgb(0, 0, 0); color:rgb(0, 0, 0);">
@@ -59,7 +59,7 @@ if (isset($_POST['ban-ip'])) {
                 <p><i class="fas fa-exclamation-triangle"></i> Please enter a link to which will be redirected the banned user.</p>
         </div>';
     } else {
-        $queryvalid = $mysqli->query("SELECT * FROM `psec_bans` WHERE ip='$ip' LIMIT 1");
+        $queryvalid = $mysqli->query("SELECT * FROM `qurik_bans` WHERE ip='$ip' LIMIT 1");
         $validator  = mysqli_num_rows($queryvalid);
         if ($validator > "0") {
             echo '<br />
@@ -67,7 +67,7 @@ if (isset($_POST['ban-ip'])) {
                 <p><i class="fas fa-info-circle"></i> This <strong>IP Address</strong> is already banned.</p>
         </div>';
         } else {
-            $query = $mysqli->query("INSERT INTO `psec_bans` (`ip`, `date`, `time`, `reason`, `redirect`, `url`) VALUES ('$ip', '$date', '$time', '$reason', '$redirect', '$url')");
+            $query = $mysqli->query("INSERT INTO `qurik_bans` (`ip`, `date`, `time`, `reason`, `redirect`, `url`) VALUES ('$ip', '$date', '$time', '$reason', '$redirect', '$url')");
         }
     }
 }
@@ -80,7 +80,7 @@ if (isset($_POST['ban-ip'])) {
 if (isset($_GET['edit-id'])) {
     $id = (int) $_GET["edit-id"];
     
-	$result = $mysqli->query("SELECT * FROM `psec_bans` WHERE id = '$id'");
+	$result = $mysqli->query("SELECT * FROM `qurik_bans` WHERE id = '$id'");
     $row    = mysqli_fetch_assoc($result);
 	
 	if (empty($id) || mysqli_num_rows($result) == 0) {
@@ -105,7 +105,7 @@ if (isset($_GET['edit-id'])) {
 					<p><i class="fas fa-exclamation-triangle"></i> Please enter a link to which will be redirected the banned user.</p>
 			</div>';
         } else {
-            $update = $mysqli->query("UPDATE `psec_bans` SET ip='$ip', redirect='$redirect', url='$url', reason='$reason' WHERE id='$id'");
+            $update = $mysqli->query("UPDATE `qurik_bans` SET ip='$ip', redirect='$redirect', url='$url', reason='$reason' WHERE id='$id'");
         }
     }
 ?>         
@@ -197,7 +197,7 @@ if (isset($_GET['edit-id'])) {
 									</thead>
 									<tbody>
 <?php
-$query = $mysqli->query("SELECT * FROM `psec_bans`");
+$query = $mysqli->query("SELECT * FROM `qurik_bans`");
 while ($row = $query->fetch_assoc()) {
     echo '
 										<tr>

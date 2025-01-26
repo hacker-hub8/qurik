@@ -4,12 +4,12 @@ head();
 
 // Purge logs older than 30 days
 $datetod = strtotime(date('d F Y', strtotime('-30 days')));
-$query2 = $mysqli->query("SELECT id, date, ip FROM `psec_live-traffic` ORDER BY id ASC");
+$query2 = $mysqli->query("SELECT id, date, ip FROM `qurik_live-traffic` ORDER BY id ASC");
 while ($row2 = $query2->fetch_assoc()) {
 	if (strtotime($row2['date']) < $datetod) {
 		
 		$id     = $row2['id'];
-		$query3 = $mysqli->query("DELETE FROM `psec_live-traffic` WHERE id = '$id'");
+		$query3 = $mysqli->query("DELETE FROM `qurik_live-traffic` WHERE id = '$id'");
 		
 		// Delete cache file
 		if(is_file('modules/cache/live-traffic/' . $row2['ip'] . '.json')) {
@@ -38,7 +38,7 @@ if (isset($_GET['disable'])) {
 }
 
 if (isset($_GET['delete-all'])) {
-    $query = $mysqli->query("TRUNCATE TABLE `psec_live-traffic`");
+    $query = $mysqli->query("TRUNCATE TABLE `qurik_live-traffic`");
 }
 ?>
 <div class="content-wrapper" style="background-color:rgb(0, 0, 0); color:rgb(0, 0, 0);">
@@ -105,7 +105,7 @@ if ($settings['live_traffic'] == 0) {
 								</thead>
 								<tbody>
 <?php
-$query = $mysqli->query("SELECT id, bot, ip, country, country_code, browser, browser_code, os, os_code, domain, request_uri, date, time FROM `psec_live-traffic` ORDER BY id DESC");
+$query = $mysqli->query("SELECT id, bot, ip, country, country_code, browser, browser_code, os, os_code, domain, request_uri, date, time FROM `qurik_live-traffic` ORDER BY id DESC");
 while ($row = $query->fetch_assoc()) {
     echo '
 									<tr>

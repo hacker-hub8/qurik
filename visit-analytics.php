@@ -24,38 +24,38 @@ if (isset($_GET['disable'])) {
 	}
 }
 
-$query2 = $mysqli->query("SELECT id, date FROM `psec_live-traffic` ORDER BY id ASC");
+$query2 = $mysqli->query("SELECT id, date FROM `qurik_live-traffic` ORDER BY id ASC");
 while ($row2 = $query2->fetch_assoc()) {
 	if (strtotime($row2['date']) < $datetod) {
 		$id     = $row2['id'];
-		$query3 = $mysqli->query("DELETE FROM `psec_live-traffic` WHERE id = '$id'");
+		$query3 = $mysqli->query("DELETE FROM `qurik_live-traffic` WHERE id = '$id'");
 	}
 }
 
 if (isset($_GET['delete-all'])) {
-    $query = $mysqli->query("TRUNCATE TABLE `psec_live-traffic`");
+    $query = $mysqli->query("TRUNCATE TABLE `qurik_live-traffic`");
 }
 
 //Today Stats
 @$date = @date('d F Y');
 @$ctime = @date("H:i", strtotime('-30 seconds'));
 
-$tsquery1 = $mysqli->query("SELECT id FROM `psec_live-traffic` WHERE `date`='$date' AND `time`>='$ctime'");
+$tsquery1 = $mysqli->query("SELECT id FROM `qurik_live-traffic` WHERE `date`='$date' AND `time`>='$ctime'");
 $tscount1 = $tsquery1->num_rows;
-$tsquery2 = $mysqli->query("SELECT id FROM `psec_live-traffic` WHERE `date`='$date' AND `uniquev`=1");
+$tsquery2 = $mysqli->query("SELECT id FROM `qurik_live-traffic` WHERE `date`='$date' AND `uniquev`=1");
 $tscount2 = $tsquery2->num_rows;
-$tsquery3 = $mysqli->query("SELECT id FROM `psec_live-traffic` WHERE `date`='$date'");
+$tsquery3 = $mysqli->query("SELECT id FROM `qurik_live-traffic` WHERE `date`='$date'");
 $tscount3 = $tsquery3->num_rows;
-$tsquery4 = $mysqli->query("SELECT id FROM `psec_live-traffic` WHERE `date`='$date' AND `uniquev`=1 AND `bot`=1");
+$tsquery4 = $mysqli->query("SELECT id FROM `qurik_live-traffic` WHERE `date`='$date' AND `uniquev`=1 AND `bot`=1");
 $tscount4 = $tsquery4->num_rows;
 
 //Month Stats
 @$mdate = @date('F Y');
-$msquery1 = $mysqli->query("SELECT id FROM `psec_live-traffic` WHERE `date` LIKE '%$mdate' AND `uniquev`=1");
+$msquery1 = $mysqli->query("SELECT id FROM `qurik_live-traffic` WHERE `date` LIKE '%$mdate' AND `uniquev`=1");
 $mscount1 = $msquery1->num_rows;
-$msquery2 = $mysqli->query("SELECT id FROM `psec_live-traffic` WHERE `date` LIKE '%$mdate'");
+$msquery2 = $mysqli->query("SELECT id FROM `qurik_live-traffic` WHERE `date` LIKE '%$mdate'");
 $mscount2 = $msquery2->num_rows;
-$msquery3 = $mysqli->query("SELECT id FROM `psec_live-traffic` WHERE `date` LIKE '%$mdate' AND `uniquev`=1 AND `bot`=1");
+$msquery3 = $mysqli->query("SELECT id FROM `qurik_live-traffic` WHERE `date` LIKE '%$mdate' AND `uniquev`=1 AND `bot`=1");
 $mscount3 = $msquery3->num_rows;
 ?>
 <div class="content-wrapper" style="background-color:rgb(0, 0, 0); color:rgb(0, 0, 0);">
@@ -447,7 +447,7 @@ $countries = array(
 );
 
 foreach ($countries as $country) {
-    $log_result = $mysqli->query("SELECT country_code FROM `psec_live-traffic` WHERE `country` LIKE '%$country%'");
+    $log_result = $mysqli->query("SELECT country_code FROM `qurik_live-traffic` WHERE `country` LIKE '%$country%'");
     $log_rows   = mysqli_num_rows($log_result);
     $lgrow      = mysqli_fetch_assoc($log_result);
     

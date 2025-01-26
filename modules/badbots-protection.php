@@ -1754,20 +1754,20 @@ if ($settings['badbot_protection'] == 1) {
             
             //Logging
             if ($settings['badbot_logging'] == 1) {
-                psec_logging($mysqli, $type);
+                qurik_logging($mysqli, $type);
             }
             
             //AutoBan
             if ($settings['badbot_autoban'] == 1) {
-                psec_autoban($mysqli, $type);
+                qurik_autoban($mysqli, $type);
             }
             
             //E-Mail Notification
             if ($settings['mail_notifications'] == 1 && $settings['badbot_mail'] == 1) {
-                psec_mail($mysqli, $type);
+                qurik_mail($mysqli, $type);
             }
 			
-            echo '<meta http-equiv="refresh" content="0;url=' . $settings['projectsecurity_path'] . '/pages/badbot-detected.php" />';
+            echo '<meta http-equiv="refresh" content="0;url=' . $settings['qurik_path'] . '/pages/badbot-detected.php" />';
             exit;
         }
     }

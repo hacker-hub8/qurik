@@ -5,7 +5,7 @@ head();
 if (isset($_GET['delete-id'])) {
     $id    = (int) $_GET["delete-id"];
 
-    $query = $mysqli->query("DELETE FROM `psec_ip-whitelist` WHERE id='$id'");
+    $query = $mysqli->query("DELETE FROM `qurik_ip-whitelist` WHERE id='$id'");
 }
 ?>
 <div class="content-wrapper" style="background-color:rgb(0, 0, 0); color:rgb(0, 0, 0);">
@@ -45,7 +45,7 @@ if (isset($_POST['add'])) {
                 <p><i class="fas fa-exclamation-triangle"></i> The entered <strong>IP Address</strong> is invalid.</p>
         </div>';
     } else {
-        $queryvalid = $mysqli->query("SELECT * FROM `psec_ip-whitelist` WHERE ip='$ip' LIMIT 1");
+        $queryvalid = $mysqli->query("SELECT * FROM `qurik_ip-whitelist` WHERE ip='$ip' LIMIT 1");
         $validator  = mysqli_num_rows($queryvalid);
         if ($validator > "0") {
             echo '<br />
@@ -53,7 +53,7 @@ if (isset($_POST['add'])) {
 					<p><i class="fas fa-info-circle"></i> This <strong>IP Address</strong> is already whitelisted.</p>
 			</div>';
         } else {
-            $query = $mysqli->query("INSERT INTO `psec_ip-whitelist` (ip, notes) VALUES('$ip', '$notes')");
+            $query = $mysqli->query("INSERT INTO `qurik_ip-whitelist` (ip, notes) VALUES('$ip', '$notes')");
         }
     }
 }
@@ -66,7 +66,7 @@ if (isset($_POST['add'])) {
 if (isset($_GET['edit-id'])) {
     $id    = (int) $_GET["edit-id"];
 
-    $sql   = $mysqli->query("SELECT * FROM `psec_ip-whitelist` WHERE id = '$id'");
+    $sql   = $mysqli->query("SELECT * FROM `qurik_ip-whitelist` WHERE id = '$id'");
     $row   = mysqli_fetch_assoc($sql);
 	
     if (empty($id) || mysqli_num_rows($sql) == 0) {
@@ -85,7 +85,7 @@ if (isset($_GET['edit-id'])) {
 					<p><i class="fas fa-exclamation-triangle"></i> The entered <strong>IP Address</strong> is invalid.</p>
 			</div>';
         } else {
-            $queryvalid = $mysqli->query("SELECT * FROM `psec_ip-whitelist` WHERE ip='$ip' AND id != '$id' LIMIT 1");
+            $queryvalid = $mysqli->query("SELECT * FROM `qurik_ip-whitelist` WHERE ip='$ip' AND id != '$id' LIMIT 1");
             $validator  = mysqli_num_rows($queryvalid);
             if ($validator > "0") {
                 echo '<br />
@@ -93,7 +93,7 @@ if (isset($_GET['edit-id'])) {
 						<p><i class="fas fa-info-circle"></i> This <strong>IP Address</strong> is already whitelisted.</p>
 				</div>';
             } else {
-                $query = $mysqli->query("UPDATE `psec_ip-whitelist` SET ip='$ip', `notes`='$notes' WHERE id='$id'");
+                $query = $mysqli->query("UPDATE `qurik_ip-whitelist` SET ip='$ip', `notes`='$notes' WHERE id='$id'");
 				echo '<meta http-equiv="refresh" content="0; url=ip-whitelist.php">';
             }
         }
@@ -147,7 +147,7 @@ if (isset($_GET['edit-id'])) {
 									</thead>
 									<tbody>
 <?php
-$query = $mysqli->query("SELECT * FROM `psec_ip-whitelist`");
+$query = $mysqli->query("SELECT * FROM `qurik_ip-whitelist`");
 while ($row = $query->fetch_assoc()) {
     echo '
 										<tr>

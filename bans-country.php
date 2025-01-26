@@ -5,7 +5,7 @@ head();
 if (isset($_GET['delete-id'])) {
     $id    = (int) $_GET["delete-id"];
 
-    $query = $mysqli->query("DELETE FROM `psec_bans-country` WHERE id='$id'");
+    $query = $mysqli->query("DELETE FROM `qurik_bans-country` WHERE id='$id'");
 }
 
 if (isset($_GET['blacklist'])) {
@@ -59,7 +59,7 @@ if (isset($_POST['add-country'])) {
                 <p><i class="fas fa-exclamation-triangle"></i> Please enter a link to which will be redirected all visitors from the banned country.</p>
         </div>';
     } else {
-        $queryvalid = $mysqli->query("SELECT * FROM `psec_bans-country` WHERE country='$country' LIMIT 1");
+        $queryvalid = $mysqli->query("SELECT * FROM `qurik_bans-country` WHERE country='$country' LIMIT 1");
         $validator  = mysqli_num_rows($queryvalid);
         if ($validator > "0") {
             echo '<br />
@@ -67,7 +67,7 @@ if (isset($_POST['add-country'])) {
                 <p><i class="fas fa-info-circle"></i> This <strong>Country</strong> is already added.</p>
         </div>';
         } else {
-            $query = $mysqli->query("INSERT INTO `psec_bans-country` (country, redirect, url) VALUES('$country', '$redirect', '$url')");
+            $query = $mysqli->query("INSERT INTO `qurik_bans-country` (country, redirect, url) VALUES('$country', '$redirect', '$url')");
         }
     }
 }
@@ -80,7 +80,7 @@ if (isset($_POST['add-country'])) {
 if (isset($_GET['edit-id'])) {
     $id = (int) $_GET["edit-id"];
     
-	$result = $mysqli->query("SELECT * FROM `psec_bans-country` WHERE id = '$id'");
+	$result = $mysqli->query("SELECT * FROM `qurik_bans-country` WHERE id = '$id'");
     $row    = mysqli_fetch_assoc($result);
 	
     if (empty($id) || mysqli_num_rows($result) == 0) {
@@ -99,7 +99,7 @@ if (isset($_GET['edit-id'])) {
 					<p><i class="fas fa-exclamation-triangle"></i> Please enter a link to which will be redirected all visitors from the banned country.</p>
 			</div>';
         } else {
-            $update = $mysqli->query("UPDATE `psec_bans-country` SET country='$country', redirect='$redirect', url='$url' WHERE id='$id'");
+            $update = $mysqli->query("UPDATE `qurik_bans-country` SET country='$country', redirect='$redirect', url='$url' WHERE id='$id'");
         }
     }
 ?>
@@ -438,7 +438,7 @@ if ($settings['countryban_blacklist'] == 0) {
 									</thead>
 									<tbody>
 <?php
-$querybc = $mysqli->query("SELECT * FROM `psec_bans-country`");
+$querybc = $mysqli->query("SELECT * FROM `qurik_bans-country`");
 while ($rowbc = $querybc->fetch_assoc()) {
     echo '
 										<tr>

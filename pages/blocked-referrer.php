@@ -1,11 +1,11 @@
 <?php
 include "header.php";
 
-$query = $mysqli->query("SELECT * FROM `psec_pages-layolt` WHERE page='Blocked_ISP'");
+$query = $mysqli->query("SELECT * FROM `qurik_pages-layolt` WHERE page='Blocked_RFR'");
 $row   = mysqli_fetch_array($query);
 ?>
         <br />
-        <div class="row d-flex justify-content-center">
+        <div class="row d-flex justify-content-center card bg-light">
             <center>
 				<div class="alert alert-danger" class="wpage_head">
                     <h5 class="alert-heading"><?php
@@ -15,7 +15,7 @@ echo html_entity_decode($row['text']);
 				
                     <p class="font35">
 <span class="fa-stack fa-lg">
-  <i class="fas fa-wifi fa-stack-1x"></i>
+  <i class="fas fa-link fa-stack-1x"></i>
   <i class="fas fa-ban fa-stack-2x text-danger"></i>
 </span></p>
                 <h6>Please contact with the webmaster of the website if you think something is wrong.</h6>

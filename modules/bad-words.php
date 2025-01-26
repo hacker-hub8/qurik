@@ -1,6 +1,6 @@
 <?php
 //Bad Words
-$queryfc = $mysqli->query("SELECT * FROM `psec_bad-words`");
+$queryfc = $mysqli->query("SELECT * FROM `qurik_bad-words`");
 $countfc = mysqli_num_rows($queryfc);
 
 if ($countfc > 0) {
@@ -10,7 +10,7 @@ if ($countfc > 0) {
     {
         global $settings;
 		
-		$query1 = $mysqli->query("SELECT * FROM `psec_bad-words`");
+		$query1 = $mysqli->query("SELECT * FROM `qurik_bad-words`");
 
         while ($row1 = $query1->fetch_array()) {
             $buffer = str_replace($row1['word'], $settings['badword_replace'], $buffer);
@@ -28,7 +28,7 @@ if ($countfc > 0) {
     {
         global $settings;
 		
-		$query2 = $mysqli->query("SELECT * FROM `psec_bad-words`");
+		$query2 = $mysqli->query("SELECT * FROM `qurik_bad-words`");
         
         while ($row2 = $query2->fetch_array()) {
             $badwords2[] = $row2['word'];
@@ -39,7 +39,7 @@ if ($countfc > 0) {
                 $output[$var] = badwords_checker($val, $mysqli);
             }
         } else {
-            $query2 = $mysqli->query("SELECT * FROM `psec_bad-words`");
+            $query2 = $mysqli->query("SELECT * FROM `qurik_bad-words`");
             while ($row3 = $query2->fetch_array()) {
                 $input = str_replace($row3['word'], $settings['badword_replace'], $input);
                 

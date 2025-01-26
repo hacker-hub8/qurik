@@ -21,39 +21,39 @@ if (isset($_POST['update'])) {
     
     $text9 = addslashes(htmlentities($_POST['text9']));
     
-    $update_banned = $mysqli->query("UPDATE `psec_pages-layolt` SET 
+    $update_banned = $mysqli->query("UPDATE `qurik_pages-layolt` SET 
 `text` = '$text' 
 WHERE page='Banned'");
     
-    $update_blocked = $mysqli->query("UPDATE `psec_pages-layolt` SET 
+    $update_blocked = $mysqli->query("UPDATE `qurik_pages-layolt` SET 
 `text` = '$text2' 
 WHERE page='Blocked'");
     
-    $update_proxy = $mysqli->query("UPDATE `psec_pages-layolt` SET 
+    $update_proxy = $mysqli->query("UPDATE `qurik_pages-layolt` SET 
 `text` = '$text3' 
 WHERE page='Proxy'");
     
-    $update_spam = $mysqli->query("UPDATE `psec_pages-layolt` SET 
+    $update_spam = $mysqli->query("UPDATE `qurik_pages-layolt` SET 
 `text` = '$text4' 
 WHERE page='Spam'");
     
-    $update_bannedc = $mysqli->query("UPDATE `psec_pages-layolt` SET 
+    $update_bannedc = $mysqli->query("UPDATE `qurik_pages-layolt` SET 
 `text` = '$text5' 
 WHERE page='Banned_Country'");
     
-    $update_blockedbr = $mysqli->query("UPDATE `psec_pages-layolt` SET 
+    $update_blockedbr = $mysqli->query("UPDATE `qurik_pages-layolt` SET 
 `text` = '$text6' 
 WHERE page='Blocked_Browser'");
     
-    $update_blockedos = $mysqli->query("UPDATE `psec_pages-layolt` SET 
+    $update_blockedos = $mysqli->query("UPDATE `qurik_pages-layolt` SET 
 `text` = '$text7' 
 WHERE page='Blocked_OS'");
     
-    $update_blockedisp = $mysqli->query("UPDATE `psec_pages-layolt` SET 
+    $update_blockedisp = $mysqli->query("UPDATE `qurik_pages-layolt` SET 
 `text` = '$text8' 
 WHERE page='Blocked_ISP'");
     
-    $update_blockedrfr = $mysqli->query("UPDATE `psec_pages-layolt` SET 
+    $update_blockedrfr = $mysqli->query("UPDATE `qurik_pages-layolt` SET 
 `text` = '$text9' 
 WHERE page='Blocked_RFR'");
     
@@ -108,7 +108,7 @@ WHERE page='Blocked_RFR'");
 								<form action="" method="post">
 								<div class="tab-content">
 <?php
-$sql   = $mysqli->query("SELECT * FROM `psec_pages-layolt` WHERE page='Blocked'");
+$sql   = $mysqli->query("SELECT * FROM `qurik_pages-layolt` WHERE page='Blocked'");
 $row   = mysqli_fetch_assoc($sql);
 ?>
 									<div id="sqli-layout" class="tab-pane fade active show">
@@ -123,7 +123,7 @@ echo $row['text'];
 									</div>
 
 <?php
-$sql   = $mysqli->query("SELECT * FROM `psec_pages-layolt` WHERE page='Proxy'");
+$sql   = $mysqli->query("SELECT * FROM `qurik_pages-layolt` WHERE page='Proxy'");
 $row   = mysqli_fetch_assoc($sql);
 ?>
 									<div id="proxy-layout" class="tab-pane fade">
@@ -138,7 +138,7 @@ echo $row['text'];
 									</div>
                                     
 <?php
-$sql   = $mysqli->query("SELECT * FROM `psec_pages-layolt` WHERE page='Spam'");
+$sql   = $mysqli->query("SELECT * FROM `qurik_pages-layolt` WHERE page='Spam'");
 $row   = mysqli_fetch_assoc($sql);
 ?>
                                     <div id="spam-layout" class="tab-pane fade">
@@ -153,7 +153,7 @@ echo $row['text'];
 									</div>
                                     
 <?php
-$sql   = $mysqli->query("SELECT * FROM `psec_pages-layolt` WHERE page='Banned'");
+$sql   = $mysqli->query("SELECT * FROM `qurik_pages-layolt` WHERE page='Banned'");
 $row   = mysqli_fetch_assoc($sql);
 ?>
 									<div id="banned-layout" class="tab-pane fade">
@@ -168,7 +168,7 @@ echo $row['text'];
 									</div>
                                     
 <?php
-$sql   = $mysqli->query("SELECT * FROM `psec_pages-layolt` WHERE page='Banned_Country'");
+$sql   = $mysqli->query("SELECT * FROM `qurik_pages-layolt` WHERE page='Banned_Country'");
 $row   = mysqli_fetch_assoc($sql);
 ?>
 									<div id="bannedc-layout" class="tab-pane fade">
@@ -183,7 +183,7 @@ echo $row['text'];
 									</div>
                                     
 <?php
-$sql   = $mysqli->query("SELECT * FROM `psec_pages-layolt` WHERE page='Blocked_Browser'");
+$sql   = $mysqli->query("SELECT * FROM `qurik_pages-layolt` WHERE page='Blocked_Browser'");
 $row   = mysqli_fetch_assoc($sql);
 ?>
 									<div id="bannedbr-layout" class="tab-pane fade">
@@ -198,7 +198,7 @@ echo $row['text'];
 									</div>
                                     
 <?php
-$sql   = $mysqli->query("SELECT * FROM `psec_pages-layolt` WHERE page='Blocked_OS'");
+$sql   = $mysqli->query("SELECT * FROM `qurik_pages-layolt` WHERE page='Blocked_OS'");
 $row   = mysqli_fetch_assoc($sql);
 ?>
 									<div id="bannedos-layout" class="tab-pane fade">
@@ -213,7 +213,7 @@ echo $row['text'];
 									</div>
                                     
 <?php
-$sql   = $mysqli->query("SELECT * FROM `psec_pages-layolt` WHERE page='Blocked_ISP'");
+$sql   = $mysqli->query("SELECT * FROM `qurik_pages-layolt` WHERE page='Blocked_ISP'");
 $row   = mysqli_fetch_assoc($sql);
 ?>
 									<div id="bannedisp-layout" class="tab-pane fade">
@@ -228,7 +228,7 @@ echo $row['text'];
 									</div>
 
 <?php
-$sql   = $mysqli->query("SELECT * FROM `psec_pages-layolt` WHERE page='Blocked_RFR'");
+$sql   = $mysqli->query("SELECT * FROM `qurik_pages-layolt` WHERE page='Blocked_RFR'");
 $row   = mysqli_fetch_assoc($sql);
 ?>
 									<div id="bannedrfr-layout" class="tab-pane fade">

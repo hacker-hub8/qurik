@@ -5,11 +5,11 @@ head();
 if (isset($_GET['delete-id'])) {
     $id    = (int) $_GET["delete-id"];
 
-    $query = $mysqli->query("DELETE FROM `psec_logs` WHERE id='$id'");
+    $query = $mysqli->query("DELETE FROM `qurik_logs` WHERE id='$id'");
 }
 
 if (isset($_GET['delete-all'])) {
-    $query = $mysqli->query("DELETE FROM `psec_logs` WHERE type='Bad Bot' or type='Fake Bot' or type='Missing User-Agent header' or type='Missing header Accept' or type='Invalid IP Address header'");
+    $query = $mysqli->query("DELETE FROM `qurik_logs` WHERE type='Bad Bot' or type='Fake Bot' or type='Missing User-Agent header' or type='Missing header Accept' or type='Invalid IP Address header'");
 }
 ?>
 <div class="content-wrapper" style="background-color:rgb(0, 0, 0); color:rgb(0, 0, 0);">
@@ -63,7 +63,7 @@ if (isset($_GET['delete-all'])) {
 									</thead>
 									<tbody>
 <?php
-$sql   = $mysqli->query("SELECT id, ip, date, time, browser, browser_code, os, os_code, country, country_code, type, useragent FROM `psec_logs` WHERE type='Bad Bot' or type='Fake Bot' or type='Missing User-Agent header' or type='Missing header Accept' or type='Invalid IP Address header' ORDER by id DESC");
+$sql   = $mysqli->query("SELECT id, ip, date, time, browser, browser_code, os, os_code, country, country_code, type, useragent FROM `qurik_logs` WHERE type='Bad Bot' or type='Fake Bot' or type='Missing User-Agent header' or type='Missing header Accept' or type='Invalid IP Address header' ORDER by id DESC");
 while ($row = mysqli_fetch_assoc($sql)) {
     echo '
 										<tr>

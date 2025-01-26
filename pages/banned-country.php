@@ -1,7 +1,7 @@
 <?php
 include "header.php";
 
-$query = $mysqli->query("SELECT * FROM `psec_pages-layolt` WHERE page='Banned_Country'");
+$query = $mysqli->query("SELECT * FROM `qurik_pages-layolt` WHERE page='Banned_Country'");
 $row   = $query->fetch_assoc();
 ?>
         <br />
@@ -25,7 +25,7 @@ if(isset($_GET['c_id'])) {
 }
 
 if ($cid > 0) {
-    $querybanned = $mysqli->query("SELECT * FROM `psec_bans-country` WHERE id='$cid'");
+    $querybanned = $mysqli->query("SELECT * FROM `qurik_bans-country` WHERE id='$cid'");
     $banned      = mysqli_num_rows($querybanned);
     $rowcb       = mysqli_fetch_array($querybanned);
     $redirect    = $rowcb['redirect'];

@@ -4,11 +4,11 @@ head();
 
 // Purge login logs older than 6 months
 $datetod = strtotime(date('d F Y', strtotime('-6 months')));
-$query2 = $mysqli->query("SELECT id, date FROM `psec_logins` ORDER BY id ASC");
+$query2 = $mysqli->query("SELECT id, date FROM `qurik_logins` ORDER BY id ASC");
 while ($row2 = $query2->fetch_assoc()) {
 	if (strtotime($row2['date']) < $datetod) {
 		$id     = $row2['id'];
-		$query3 = $mysqli->query("DELETE FROM `psec_logins` WHERE id = '$id'");
+		$query3 = $mysqli->query("DELETE FROM `qurik_logins` WHERE id = '$id'");
 	}
 }
 ?>
@@ -63,7 +63,7 @@ while ($row2 = $query2->fetch_assoc()) {
 									</thead>
 									<tbody>
 <?php
-$query = $mysqli->query("SELECT * FROM `psec_logins` ORDER BY id DESC");
+$query = $mysqli->query("SELECT * FROM `qurik_logins` ORDER BY id DESC");
 while ($row = $query->fetch_assoc()) {
     echo '
 										<tr>

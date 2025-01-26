@@ -9,7 +9,7 @@ if ($settings['proxy_protection'] > 0) {
     
     if ($settings['proxy_protection'] == 1) {
         
-        if (psec_getcache($cache_file) == 'PSEC_NoCache') {
+        if (qurik_getcache($cache_file) == 'qurik_NoCache') {
             $key = $settings['proxy_api1'];
             
             $ch  = curl_init();
@@ -27,7 +27,7 @@ if ($settings['proxy_protection'] > 0) {
 			// Grabs API Response and Caches
 			file_put_contents($cache_file, $choutput);
         } else {
-            @$block = json_decode(psec_getcache($cache_file))->block;
+            @$block = json_decode(qurik_getcache($cache_file))->block;
         }
         
         if ($block == 1) {
@@ -36,7 +36,7 @@ if ($settings['proxy_protection'] > 0) {
         
     } else if ($settings['proxy_protection'] == 2) {
         
-        if (psec_getcache($cache_file) == 'PSEC_NoCache') {
+        if (qurik_getcache($cache_file) == 'qurik_NoCache') {
             $key = $settings['proxy_api2'];
             
             $ch           = curl_init('http://proxycheck.io/v2/' . $ip . '?key=' . $key . '&vpn=1');
@@ -53,7 +53,7 @@ if ($settings['proxy_protection'] > 0) {
 			// Grabs API Response and Caches
 			file_put_contents($cache_file, $response);
         } else {
-            $jsonc = json_decode(psec_getcache($cache_file));
+            $jsonc = json_decode(qurik_getcache($cache_file));
         }
         
         if (isset($jsonc->$ip->proxy) && $jsonc->$ip->proxy == "yes") {
@@ -62,7 +62,7 @@ if ($settings['proxy_protection'] > 0) {
         
     } else if ($settings['proxy_protection'] == 3) {
         
-        if (psec_getcache($cache_file) == 'PSEC_NoCache') {
+        if (qurik_getcache($cache_file) == 'qurik_NoCache') {
             $key = $settings['proxy_api3'];
             
             $headers = [
@@ -87,7 +87,7 @@ if ($settings['proxy_protection'] > 0) {
 				file_put_contents($cache_file, $choutput);
             }
         } else {
-            $output = json_decode(psec_getcache($cache_file), 1);
+            $output = json_decode(qurik_getcache($cache_file), 1);
             
             if ($output['data']['block'] == 1) {
                 $proxyv = 1;
@@ -102,12 +102,12 @@ if ($settings['proxy_protection'] > 0) {
         
         //Logging
         if ($settings['proxy_logging'] == 1) {
-            psec_logging($mysqli, $type);
+            qurik_logging($mysqli, $type);
         }
         
         //E-Mail Notification
         if ($settings['mail_notifications'] == 1 && $settings['proxy_mail'] == 1) {
-            psec_mail($mysqli, $type);
+            qurik_mail($mysqli, $type);
         }
         
         echo '<meta http-equiv="refresh" content="0;url=' . $settings['proxy_redirect'] . '?element=api' . $settings['proxy_protection'] . '" />';
@@ -148,12 +148,12 @@ if ($settings['proxy_protection2'] == 1) {
             
             //Logging
             if ($settings['proxy_logging'] == 1) {
-                psec_logging($mysqli, $type);
+                qurik_logging($mysqli, $type);
             }
             
             //E-Mail Notification
             if ($settings['mail_notifications'] == 1 && $settings['proxy_mail'] == 1) {
-                psec_mail($mysqli, $type);
+                qurik_mail($mysqli, $type);
             }
             
             echo '<meta http-equiv="refresh" content="0;url=' . $settings['proxy_redirect'] . '?element=' . $x . '" />';

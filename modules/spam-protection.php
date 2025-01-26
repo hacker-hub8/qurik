@@ -4,7 +4,7 @@ if ($settings['spam_protection'] == 1) {
     
     $dnsbl_lookup = array();
     
-    $query = $mysqli->query("SELECT * FROM `psec_dnsbl-databases`");
+    $query = $mysqli->query("SELECT * FROM `qurik_dnsbl-databases`");
     while ($row = $query->fetch_assoc()) {
         
         $dnsbl_lookup[] = $row['database'];
@@ -17,12 +17,12 @@ if ($settings['spam_protection'] == 1) {
                 
                 //Logging
                 if ($settings['spam_logging'] == 1) {
-                    psec_logging($mysqli, $type);
+                    qurik_logging($mysqli, $type);
                 }
                 
                 //E-Mail Notification
                 if ($settings['mail_notifications'] == 1 && $settings['spam_mail'] == 1) {
-                    psec_mail($mysqli, $type);
+                    qurik_mail($mysqli, $type);
                 }
                 
                 echo '<meta http-equiv="refresh" content="0;url=' . $settings['spam_redirect'] . '" />';

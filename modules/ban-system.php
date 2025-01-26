@@ -2,27 +2,27 @@
 $cache_file = __DIR__ . "/cache/ip-details/". str_replace(":", "-", $ip) .".json";
 
 //Ban System
-$querybanned = $mysqli->query("SELECT ip FROM `psec_bans` WHERE ip='$ip' LIMIT 1");
+$querybanned = $mysqli->query("SELECT ip FROM `qurik_bans` WHERE ip='$ip' LIMIT 1");
 if ($querybanned->num_rows > 0) {
-    $bannedpage_url = $settings['projectsecurity_path'] . "/pages/banned.php";
+    $bannedpage_url = $settings['qurik_path'] . "/pages/banned.php";
     echo '<meta http-equiv="refresh" content="0;url=' . $bannedpage_url . '" />';
     exit;
 }
 
 //IP Ranges
-$querybanned = $mysqli->query("SELECT ip_range FROM `psec_bans-ranges` WHERE ip_range='$ip_range' LIMIT 1");
+$querybanned = $mysqli->query("SELECT ip_range FROM `qurik_bans-ranges` WHERE ip_range='$ip_range' LIMIT 1");
 if ($querybanned->num_rows > 0) {
-    $bannedpage_url = $settings['projectsecurity_path'] . "/pages/banned.php";
+    $bannedpage_url = $settings['qurik_path'] . "/pages/banned.php";
     echo '<meta http-equiv="refresh" content="0;url=' . $bannedpage_url . '" />';
     exit;
 }
 
 //Blocking Country
-$query1 = $mysqli->query("SELECT * FROM `psec_bans-country`");
+$query1 = $mysqli->query("SELECT * FROM `qurik_bans-country`");
 
-$query2 = $mysqli->query("SELECT * FROM `psec_bans-other` WHERE type = 'isp'");
+$query2 = $mysqli->query("SELECT * FROM `qurik_bans-other` WHERE type = 'isp'");
 if ($query1->num_rows > 0 OR $query2->num_rows > 0) {
-	if (psec_getcache($cache_file) == 'PSEC_NoCache') {
+	if (qurik_getcache($cache_file) == 'qurik_NoCache') {
 		$url = 'https://ipapi.co/' . $ip . '/json/';
 		$ch  = curl_init();
 		curl_setopt($ch, CURLOPT_URL, $url);
@@ -41,7 +41,7 @@ if ($query1->num_rows > 0 OR $query2->num_rows > 0) {
 		file_put_contents($cache_file, $ipcontent);
 		
 	} else {
-		$ip_data = @json_decode(psec_getcache($cache_file));
+		$ip_data = @json_decode(qurik_getcache($cache_file));
 	}
 		
     if ($ip_data && !isset($ip_data->{'error'})) {
@@ -61,13 +61,13 @@ if ($query1->num_rows > 0 OR $query2->num_rows > 0) {
     @$country_check = "Unknown";
 }
 
-@$querybanned = $mysqli->query("SELECT id, country FROM `psec_bans-country` WHERE country='$country_check'");
+@$querybanned = $mysqli->query("SELECT id, country FROM `qurik_bans-country` WHERE country='$country_check'");
 @$rowcb = mysqli_fetch_array($querybanned);
 
 if ($country_check != 'Unknown') { // Additional measure
 	if ($settings['countryban_blacklist'] == 1) {
 		if ($querybanned->num_rows > 0) {
-			$bannedcpage_url = $settings['projectsecurity_path'] . "/pages/banned-country.php?c_id=" . $rowcb['id'];
+			$bannedcpage_url = $settings['qurik_path'] . "/pages/banned-country.php?c_id=" . $rowcb['id'];
 			echo '<meta http-equiv="refresh" content="0;url=' . $bannedcpage_url . '" />';
 			exit;
 		}
@@ -76,7 +76,7 @@ if ($country_check != 'Unknown') { // Additional measure
 			// Good bot, exclude from Country Ban
 		} else {
 			if ($querybanned->num_rows <= 0) {
-				$bannedcpage_url = $settings['projectsecurity_path'] . "/pages/banned-country.php";
+				$bannedcpage_url = $settings['qurik_path'] . "/pages/banned-country.php";
 				echo '<meta http-equiv="refresh" content="0;url=' . $bannedcpage_url . '" />';
 				exit;
 			}
@@ -85,40 +85,40 @@ if ($country_check != 'Unknown') { // Additional measure
 }
 
 //Blocking Browser
-$querybanned = $mysqli->query("SELECT * FROM `psec_bans-other` WHERE type='browser'");
+$querybanned = $mysqli->query("SELECT * FROM `qurik_bans-other` WHERE type='browser'");
 while ($rowb = $querybanned->fetch_assoc()) {
     if (strpos(strtolower($browser), strtolower($rowb['value'])) !== false) {
-        $blockedbpage_url = $settings['projectsecurity_path'] . "/pages/blocked-browser.php";
+        $blockedbpage_url = $settings['qurik_path'] . "/pages/blocked-browser.php";
         echo '<meta http-equiv="refresh" content="0;url=' . $blockedbpage_url . '" />';
         exit;
     }
 }
 
 //Blocking Operating System
-$querybanned = $mysqli->query("SELECT * FROM `psec_bans-other` WHERE type='os'");
+$querybanned = $mysqli->query("SELECT * FROM `qurik_bans-other` WHERE type='os'");
 while ($rowo = $querybanned->fetch_assoc()) {
     if (strpos(strtolower($os), strtolower($rowo['value'])) !== false) {
-        $blockedopage_url = $settings['projectsecurity_path'] . "/pages/blocked-os.php";
+        $blockedopage_url = $settings['qurik_path'] . "/pages/blocked-os.php";
         echo '<meta http-equiv="refresh" content="0;url=' . $blockedopage_url . '" />';
         exit;
     }
 }
 
 //Blocking Internet Service Provider
-$querybanned = $mysqli->query("SELECT * FROM `psec_bans-other` WHERE type='isp'");
+$querybanned = $mysqli->query("SELECT * FROM `qurik_bans-other` WHERE type='isp'");
 while ($rowi = $querybanned->fetch_assoc()) {
     if (strpos(strtolower($isp_check), strtolower($rowi['value'])) !== false) {
-        $blockedipage_url = $settings['projectsecurity_path'] . "/pages/blocked-isp.php";
+        $blockedipage_url = $settings['qurik_path'] . "/pages/blocked-isp.php";
         echo '<meta http-equiv="refresh" content="0;url=' . $blockedipage_url . '" />';
         exit;
     }
 }
 
 //Blocking Referrer
-$querybanned = $mysqli->query("SELECT * FROM `psec_bans-other` WHERE type='referrer'");
+$querybanned = $mysqli->query("SELECT * FROM `qurik_bans-other` WHERE type='referrer'");
 while ($rowr = $querybanned->fetch_assoc()) {
     if (strpos(strtolower(@$referer), strtolower($rowr['value'])) !== false) {
-        $blockedrpage_url = $settings['projectsecurity_path'] . "/pages/blocked-referrer.php";
+        $blockedrpage_url = $settings['qurik_path'] . "/pages/blocked-referrer.php";
         echo '<meta http-equiv="refresh" content="0;url=' . $blockedrpage_url . '" />';
         exit;
     }
