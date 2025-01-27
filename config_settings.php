@@ -1,8 +1,6 @@
 <?php $settings = array (
   'site_url' => 'http://localhost',
   'qurik_path' => 'http://localhost/qurik',
-  'username' => 'admin',
-  'password' => '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918',
   'email' => 'hackerhub.help@gmail.com',
   'qurik' => 1,
   'mail_notifications' => 1,
@@ -43,4 +41,6 @@
   'spam_logging' => 1,
   'spam_redirect' => 'http://localhost/qurik/pages/spammer.php',
   'spam_mail' => 0,
+  'username' => NULL,
+  'password' => 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
 ); ?>

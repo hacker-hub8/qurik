@@ -16,11 +16,22 @@ if(!isset($_SESSION)) {
 
 if (isset($_SESSION['sec-username'])) {
     $uname = $_SESSION['sec-username'];
-    if ($uname != $settings['username']) {
+
+    // Query the database to check if the username exists
+    $stmt = $mysqli->prepare("SELECT username FROM qurik_admin WHERE username = ?");
+    $stmt->bind_param("s", $uname);
+    $stmt->execute();
+    $stmt->store_result();
+
+    if ($stmt->num_rows === 0) {
+        // Redirect if the username is not found in the database
         echo '<meta http-equiv="refresh" content="0; url=index.php" />';
         exit;
     }
+
+    $stmt->close();
 } else {
+    // Redirect if session is not set
     echo '<meta http-equiv="refresh" content="0; url=index.php" />';
     exit;
 }

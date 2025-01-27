@@ -19,8 +19,6 @@ $settings['qurik_path'] = substr($fullpath, 0, strpos($fullpath, '/install'));
 $settings['sqli_redirect']        = $settings['qurik_path'] . '/pages/blocked.php';
 $settings['proxy_redirect']       = $settings['qurik_path'] . '/pages/proxy.php';
 $settings['spam_redirect']        = $settings['qurik_path'] . '/pages/spammer.php';
-$settings['username']             = $_SESSION['username'];
-$settings['password']             = hash('sha256', $_SESSION['password']);
 
 file_put_contents('../config_settings.php', '<?php $settings = ' . var_export($settings, true) . '; ?>');
 

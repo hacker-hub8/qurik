@@ -147,6 +147,17 @@ CREATE TABLE IF NOT EXISTS `qurik_pages-layolt` (
   `text` text COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+
+CREATE TABLE IF NOT EXISTS `qurik_admin` (
+    `id` int AUTO_INCREMENT primary key,
+    `username` varchar(50) NOT NULL,
+    `password` varchar(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+INSERT INTO `qurik_admin` (`id`, `username`, `password`) VALUES (1, 'admin', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918');
+
+
 INSERT INTO `qurik_pages-layolt` (`id`, `page`, `text`) VALUES
 (1, 'Banned', 'You are banned and you cannot continue to the website'),
 (2, 'Blocked', 'Malicious request was detected'),
