@@ -40,18 +40,22 @@ $error = 0;
     <!-- Favicon -->
     <link rel="shortcut icon" href="assets/img/favicon.png">
     <style>
-        #backgroundVideo {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            z-index: -1;
-            transform: translate(-50%, -50%);
-        }
-    </style>
+    #backgroundVideo {
+        position: fixed; 
+        top: 0;
+        left: 0;
+        width: 100vw; 
+        height: 100vh; 
+        object-fit: cover; 
+        z-index: -1; 
+    }
+    body, html {
+        margin: 0;
+        padding: 0;
+        overflow: hidden; 
+        height: 100%;
+    }
+</style>
 </head>
 
 <body class="login-page" style="background-color:rgb(0, 0, 0);">
@@ -120,7 +124,7 @@ $error = 0;
                         <div class="input-group mb-3">
                             <input type="text" name="username" class="form-control <?php if ($error == 1) echo 'is-invalid'; ?>" placeholder="Username" <?php if ($error == 1) echo 'autofocus'; ?> required>
                             <div class="input-group-append">
-                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                <span class="input-group-text"><i style="color:rgb(0, 0, 0);" class="fas fa-user"></i></span>
                             </div>
                         </div>
                     </div>
@@ -128,13 +132,13 @@ $error = 0;
                         <div class="input-group mb-3">
                             <input type="password" name="password" class="form-control" placeholder="Password" required>
                             <div class="input-group-append">
-                                <span class="input-group-text"><i class="fas fa-key"></i></span>
+                                <span class="input-group-text"><i style="color:rgb(0, 0, 0);" class="fas fa-key"></i></span>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <button type="submit" name="signin" class="btn btn-md btn-success btn-block btn-flat"><i class="fas fa-sign-in-alt"></i>&nbsp;Sign In</button>
+                            <button style="color:rgb(0, 0, 0);" type="submit" name="signin" class="btn btn-md btn-success btn-block btn-flat"><i class="fas fa-sign-in-alt"></i>&nbsp;Sign In</button>
                         </div>
                     </div>
                 </div>

@@ -166,9 +166,11 @@ if ($settings['dark_mode'] == 1) {
 		</form>
 
 		<ul class="nav navbar-nav ml-auto">
-<li class="nav-item">
-             <a id="fullscreenButton" class="nav-link" data-toggle="tooltip" title="Full Screen" data-toggle="tooltip" data-placement="bottom"><i class="fas fa-arrows"></i></a>
-          </li>
+        <li class="nav-item">
+          <a id="fullscreenButton" class="nav-link" data-toggle="tooltip" title="Toggle Full Screen" data-placement="bottom">
+              <i class="fas fa-arrows"></i>
+          </a>
+        </li>
           <li class="nav-item d-none d-md-block">
              <a href="<?php
     echo $settings['site_url'];
