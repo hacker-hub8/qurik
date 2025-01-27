@@ -125,7 +125,7 @@ $count4 = mysqli_num_rows($query4);
                     
                     <!-- end -->
                 <br /><h4 class="card-title">Overall Statistics</h4><br />
-                    
+
                 <div class="row">          
 					    <div class="col-lg-7">
 					        <div id="panel-network" class="card card-secondary card-outline">
