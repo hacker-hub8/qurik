@@ -161,10 +161,10 @@ qurik/
 
 ## 📜 License
 
-This project is licensed under the **MIT License** – free to use and modify with attribution.
+This project is licensed under the **MIT License** 
 
 ---
 
 <p align="center">Made with ❤️ by <b>Anup Ganiger</b> | <a href="https://hackerhub8.in/me">HackerHub8</a></p>
-```
+
 
